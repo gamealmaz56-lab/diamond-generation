@@ -516,10 +516,10 @@ h2{
 .fmt-list li:last-child{border-bottom:none;}
 
 .fmt-limit{
-  font-size:13px;color:var(--muted);
+  font-size:15px;color:rgba(255,255,255,.5);
   border-top:1px solid var(--line);padding-top:22px;line-height:1.5;
 }
-.fmt.featured .fmt-limit{color:rgba(255,255,255,.25);border-color:rgba(255,255,255,.08);}
+.fmt.featured .fmt-limit{color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.08);}
 
 /* ══════════════════════════════════════
    КАК НАЧАТЬ
