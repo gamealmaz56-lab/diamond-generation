@@ -270,7 +270,9 @@ function buildResult(){
     <p>${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1]}</p>
     <p>${(special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')).slice(0,900)}…</p></div></div>
 
-  <div class="gate">
+  const peachUrl = `https://my.peach.talk/diamond-generation108?m=${scores[0]}&f=${scores[1]}&d=${scores[2]}&s=${scores[3]}&total=${total}`;
+
+  html+=`<div class="gate">
     <h3>Дальше идёт разбор — вот что вы получите</h3>
     <p class="lead">Вы прочитали только начало. Дальше — конкретика именно по вашей карте, не общие слова:</p>
     <ul class="gate-list">
@@ -280,109 +282,14 @@ function buildResult(){
       <li><b>PDF с полной картой энергий</b> — все четыре опоры, баллы, зоны, чтобы вернуться и сверить через 3 месяца.</li>
       <li><b>Короткое видео о методе «4 опоры»</b> — как это чинится системно, не через мотивацию и не через отпуск.</li>
     </ul>
-    <p class="lead" style="margin-top:14px">Открою разбор сразу на этой странице и продублирую на почту вместе с PDF и видео.</p>
-    <div class="field"><label>Имя</label><input id="fname" type="text" placeholder="Как к вам обращаться"></div>
-    <div class="field"><label>Email</label><input id="femail" type="email" placeholder="you@example.com"></div>
-    <div class="field"><label>Telegram или WhatsApp (по желанию)</label><input id="fcontact" type="text" placeholder="@username или номер"></div>
-    <button class="primary" onclick="submitGate()">Открыть мой разбор</button>
-    <p class="warnmsg hidden" id="gerr">Заполните имя и корректный email.</p>
-    <p class="fineprint">Не передаю контакты третьим лицам. Отписаться можно в один клик из любого письма.</p>
+    <p class="lead" style="margin-top:14px">Мы подготовили персональный разбор по вашим баллам. Перейдите в нашу закрытую систему, чтобы получить его.</p>
+    <a class="btn" style="width:100%;text-align:center" href="${peachUrl}">Получить мой разбор</a>
+    <p class="fineprint">Разбор, видео и PDF будут отправлены вам мгновенно.</p>
   </div>`;
 
   document.getElementById('result').innerHTML=html;
   document.getElementById('pbar').style.width='100%';
   show('result');
-}
-
-function submitGate(){
-  const name=document.getElementById('fname').value.trim();
-  const email=document.getElementById('femail').value.trim();
-  const contact=document.getElementById('fcontact').value.trim();
-  const err=document.getElementById('gerr');
-  if(!name||!/^\S+@\S+\.\S+$/.test(email)){err.classList.remove('hidden');return;}
-  err.classList.add('hidden');
-
-  const answerString=Object.keys(answers).sort((a,b)=>answers[a].n-answers[b].n).map(k=>answers[k].v).join(',');
-  const {w1,w2,spread,pkey,special,level}=RES;
-  const leakText=BANDS[PILLARS[w1].key][bandIdx(RES.scores[w1])][1];
-  const profileText=special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'');
-  const profileTitle=special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name);
-  const spreadIdx=spread>=25?0:1;
-  const payload={name,email,contact,
-    m:RES.scores[0],f:RES.scores[1],d:RES.scores[2],s:RES.scores[3],total:RES.total,
-    worst:PILLARS[w1].name,
-    profile:profileTitle,
-    level:LEVELS[level][0],
-    levelText:LEVELS[level][1],
-    leakText:leakText,
-    profileText:profileText,
-    spreadTitle:SPREAD[spreadIdx][0],
-    spreadText:SPREAD[spreadIdx][1],
-    utm:new URLSearchParams(location.search).get('utm_source')||'direct',
-    answers:answerString};
-
-  if(WEBHOOK){
-    payload._subject = "Результаты тестирования: " + name;
-    payload._captcha = "false";
-    fetch(WEBHOOK,{method:'POST',
-      headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-      body:JSON.stringify(payload)}).catch(()=>{});
-  } else {
-    console.log('WEBHOOK не задан. Данные, которые ушли бы в таблицу:',payload);
-  }
-  showFull(name);
-}
-
-function showFull(name){
-  const {scores,total,w1,w2,spread,pkey,special,level}=RES;
-  const bi=bandIdx(scores[w1]);
-  const p=PILLARS[w1];
-
-  let html=`<div class="card"><h2>${name}, вот ваш разбор</h2>
-    <p class="pillar-note nums">${scores[0]} · ${scores[1]} · ${scores[2]} · ${scores[3]} &nbsp;—&nbsp; ментальная · физическая · духовная · социальная. Сумма ${total} из 400.</p>`;
-  PILLARS.forEach((pp,i)=>{const b=bandIdx(scores[i]);
-    html+=`<div class="bar-row"><div class="bar-top">
-      <span>${pp.name}<span class="tag" style="color:${bandColor(b)}">${BANDS[pp.key][b][0]}</span></span>
-      <b>${scores[i]}</b></div>
-      <div class="bar"><i style="width:${scores[i]}%;background:${bandColor(b)}"></i></div></div>`;});
-  html+=`</div>
-
-  <div class="verdict"><h3>Уровень системы: ${LEVELS[level][0]}</h3><p>${LEVELS[level][1]}</p></div>
-
-  <div class="card"><h3>${p.name}: ${scores[w1]} баллов. Ваша главная утечка</h3>
-    <p>${BANDS[p.key][bi][1]}</p></div>`;
-
-  if(special){
-    html+=`<div class="card"><h3>${SPECIAL[special][0]}</h3><p>${SPECIAL[special][1]}</p></div>`;
-  } else if(pkey){
-    html+=`<div class="card"><h3>Ваш профиль: ${PROFILES[pkey][0]}</h3>
-      <p class="pillar-note">${PILLARS[w1].name} и ${PILLARS[w2].name.toLowerCase()}</p>
-      <p>${PROFILES[pkey][1]}</p></div>`;
-  }
-
-  const si=spread>=25?0:1;
-  html+=`<div class="card"><h3>Характер просадки: ${SPREAD[si][0]}</h3><p>${SPREAD[si][1]}</p></div>
-
-  <div class="card"><h3>Как читать диапазоны</h3>
-    <table class="legend">
-      <tr><td>0–25</td><td><b>Опора держит.</b> Ресурс есть, эта часть системы работает на вас.</td></tr>
-      <tr><td>26–50</td><td><b>Первые трещины.</b> Справляетесь за счёт запаса, а не восстановления.</td></tr>
-      <tr><td>51–75</td><td><b>Опора просела.</b> Отсюда уходит основная часть энергии.</td></tr>
-      <tr><td>76–100</td><td><b>Опора обрушена.</b> Организм и психика в аварийном режиме.</td></tr>
-    </table>
-    <p style="margin-top:20px;color:var(--muted)">Высокий балл не значит, что с вами что-то не так. Он значит, что одна из четырёх опор перегружена и тянет на себе остальные. Это чинится, и чинится точечно, если знать куда бить.</p></div>
-
-  <div class="cta"><h3>Разбор показал, где просело</h3>
-    <p>Он не показывает, почему именно у вас и что делать в вашей ситуации. Дальше короткое видео о методе «4 опоры»: как устроена система и что делать с найденной утечкой. После видео сможете записаться на бесплатную диагностическую сессию.</p>
-    <a class="btn" href="https://my.peach.talk/diamond-generation108" target="_blank" rel="noopener">Смотреть видео</a>
-    <p style="margin-top:22px;font-size:14px">Возьмите на разбор свои четыре цифры: <b>${scores[0]} · ${scores[1]} · ${scores[2]} · ${scores[3]}</b></p></div>
-
-  <div class="sig">Лена Аронов · психосоматолог, кандидат наук<br>25 лет практики · 2000 человек через метод «4 опоры»</div>
-  <div class="nav" style="justify-content:center;margin-top:32px">
-    <button class="ghost" onclick="location.reload()">Пройти заново</button></div>`;
-
-  document.getElementById('result').innerHTML=html;
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
