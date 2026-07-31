@@ -506,14 +506,13 @@ h2{
 .fmt-list li{
   font-size:15px;color:var(--muted);
   padding:12px 0 12px 22px;position:relative;
-  border-bottom:1px solid rgba(0,0,0,.05);line-height:1.5;
+  line-height:1.5;
 }
-.fmt.featured .fmt-list li{color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.06);}
+.fmt.featured .fmt-list li{color:rgba(255,255,255,.45);}
 .fmt-list li::before{
   content:'';position:absolute;left:0;top:22px;
   width:8px;height:1px;background:var(--gold);
 }
-.fmt-list li:last-child{border-bottom:none;}
 
 .fmt-limit{
   font-size:15px;color:rgba(0,0,0,.45);
