@@ -470,28 +470,28 @@ h2{
   align-items: stretch;
 }
 .fmt{
-  border-radius:16px; 
+  border-radius:24px; 
   background:var(--white);
-  padding:48px 40px;
+  padding:56px 48px;
   display:flex;flex-direction:column;
-  transition:transform .3s ease, box-shadow .3s ease;
+  transition:transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   border:1px solid rgba(184,136,46,0.15);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
 }
 .fmt:hover{
-  transform:translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  transform:translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 .fmt.featured{
   background:var(--navy);
   border:none;
   border-top:4px solid var(--gold);
-  box-shadow: 0 20px 50px rgba(12,25,39,0.15);
-  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(12,25,39,0.15);
+  transform: translateY(-12px);
 }
 .fmt.featured:hover{
-  transform: translateY(-15px);
-  box-shadow: 0 30px 60px rgba(12,25,39,0.25);
+  transform: translateY(-20px);
+  box-shadow: 0 30px 70px rgba(12,25,39,0.25);
 }
 
 .fmt-badge{
@@ -505,19 +505,22 @@ h2{
   flex-grow: 0;
 }
 .fmt h3{
-  font-family:var(--serif);font-size:32px;font-weight:500;color:var(--ink);
-  margin-bottom:12px; line-height:1.2;
+  font-family:var(--serif);font-size:28px;font-weight:400;color:var(--ink);
+  margin-bottom:16px; line-height:1.3;
   min-height: 76px; /* 2 lines */
 }
 .fmt.featured h3{color:var(--white);}
 .fmt-sub{
-  font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.6;
-  min-height: 72px; /* 3 lines */
+  font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6;
+  min-height: 68px; /* 3 lines */
 }
 .fmt.featured .fmt-sub{color:rgba(255,255,255,.5);}
 .fmt-price{
-  font-family:var(--serif);font-size:48px;color:var(--gold);
-  margin-bottom:40px;line-height:1;letter-spacing:-1px;
+  font-family:var(--serif);font-size:40px;color:var(--gold);
+  margin-bottom:40px;line-height:1;letter-spacing:-0.5px;
+}
+.fmt-price span{
+  font-size:24px; opacity:0.7; vertical-align:super; margin-right:4px;
 }
 
 .fmt-list{list-style:none; flex-grow: 1; margin-bottom:40px;}
