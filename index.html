@@ -41,7 +41,6 @@
     </ul></nav>
 
     <div class="hdr-right">
-      <span id="clock"></span>
       <a href="#cta" class="btn" id="btn-nav">Диагностика</a>
     </div>
   </div>
@@ -269,73 +268,33 @@
   <div class="wrap">
     <div class="pillars-eyebrow">Методология</div>
     <h2 class="r">Четыре опоры</h2>
-    <div class="eco-grid">
-      <div class="wheel-wrap rl" id="wheelWrap">
-        <svg class="wheel-svg" viewBox="-230 -230 460 460" role="img" aria-label="Колесо четырёх опор">
-          <defs>
-            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="rgba(255, 215, 0, 0.6)"/>
-              <stop offset="100%" stop-color="rgba(255, 215, 0, 0)"/>
-            </radialGradient>
-            <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="rgba(255, 215, 0, 0.5)"/>
-              <stop offset="100%" stop-color="rgba(255, 215, 0, 0)"/>
-            </radialGradient>
-          </defs>
-          <!-- Rings -->
-          <circle class="wr" r="160" fill="none" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
-          <!-- Spokes -->
-          <line class="ws" x1="0" y1="0" x2="0" y2="-160" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
-          <line class="ws" x1="0" y1="0" x2="160" y2="0" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
-          <line class="ws" x1="0" y1="0" x2="0" y2="160" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
-          <line class="ws" x1="0" y1="0" x2="-160" y2="0" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
-          <!-- Center glow and text -->
-          <circle r="90" fill="url(#glow)"/>
-          <circle r="50" fill="#fff9e6"/>
-          <text y="-5" fill="#111" font-family="'Playfair Display',Georgia,serif" font-size="26" text-anchor="middle" dominant-baseline="middle" font-style="italic">Лидер</text>
-          <text y="18" fill="#333" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" dominant-baseline="middle">в балансе</text>
-          <!-- Node 0: top -->
-          <g class="wn on" data-i="0" transform="translate(0,-160)" id="wn0">
-            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
-            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">01</text>
-            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">МЕНТАЛЬ-</text>
-            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">НАЯ</text>
-          </g>
-          <!-- Node 1: right -->
-          <g class="wn" data-i="1" transform="translate(160,0)" id="wn1">
-            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
-            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">02</text>
-            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">ФИЗИЧЕ-</text>
-            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">СКАЯ</text>
-          </g>
-          <!-- Node 2: bottom -->
-          <g class="wn" data-i="2" transform="translate(0,160)" id="wn2">
-            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
-            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">03</text>
-            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">ДУХОВ-</text>
-            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">НАЯ</text>
-          </g>
-          <!-- Node 3: left -->
-          <g class="wn" data-i="3" transform="translate(-160,0)" id="wn3">
-            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
-            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">04</text>
-            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">СОЦИАЛЬ-</text>
-            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">НАЯ</text>
-          </g>
-        </svg>
-        <div style="text-align: center; margin-top: 16px;">
-          <span style="font-size: 14px; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px dashed var(--gold); cursor: pointer;" onclick="document.querySelector('.wheel-svg').scrollIntoView({behavior: 'smooth'})">Нажмите на любую опору</span>
-        </div>
+    <div class="static-pillars" style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:40px;">
+      <div class="st-card" style="background:var(--card); padding:32px; border:1px solid var(--line);">
+        <div style="font-size:32px; color:var(--gold); font-family:var(--serif); line-height:1; opacity:0.5; margin-bottom:16px;">01</div>
+        <h3 style="font-family:var(--serif); font-size:24px; color:var(--ink); margin:0 0 8px;">Ментальная опора</h3>
+        <div style="font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:16px;">Способность ясно мыслить</div>
+        <p style="color:var(--muted); line-height:1.6; margin:0;">Ваше умение быстро и чётко принимать решения. Когда опора проседает, вы начинаете сомневаться, часами прокручиваете в голове одни и те же сценарии и тратите уйму сил на простые задачи. Из-за умственного перегруза бизнес начинает буксовать.</p>
       </div>
-      <div class="pillar-panel rr" id="pillarPanel">
-        <div class="pp-num" id="ppNum">01</div>
-        <div class="pp-title" id="ppTitle">Ментальная опора</div>
-        <div class="pp-role" id="ppRole">Качество вашего мышления</div>
-        <p class="pp-body" id="ppBody">Сколько энергии тратит один управленческий выбор. При просадке вы часами прокручиваете одни и те же сценарии, не можете остановить внутренний контроль и буксуете на простых развилках. Думать стоит дороже, чем когда-либо.</p>
+
+      <div class="st-card" style="background:var(--card); padding:32px; border:1px solid var(--line);">
+        <div style="font-size:32px; color:var(--gold); font-family:var(--serif); line-height:1; opacity:0.5; margin-bottom:16px;">02</div>
+        <h3 style="font-family:var(--serif); font-size:24px; color:var(--ink); margin:0 0 8px;">Физическая опора</h3>
+        <div style="font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:16px;">Уровень вашей энергии</div>
+        <p style="color:var(--muted); line-height:1.6; margin:0;">Состояние вашего тела. Хроническая усталость и недосып — это не просто «слабость характера», а физиология, которая блокирует работу мозга. Без крепкого и отдохнувшего тела невозможно выдерживать высокие нагрузки в бизнесе.</p>
+      </div>
+
+      <div class="st-card" style="background:var(--card); padding:32px; border:1px solid var(--line);">
+        <div style="font-size:32px; color:var(--gold); font-family:var(--serif); line-height:1; opacity:0.5; margin-bottom:16px;">03</div>
+        <h3 style="font-family:var(--serif); font-size:24px; color:var(--ink); margin:0 0 8px;">Духовная опора</h3>
+        <div style="font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:16px;">Понимание истинных целей</div>
+        <p style="color:var(--muted); line-height:1.6; margin:0;">Ответ на вопрос «Ради чего я всё это делаю?». Если эта опора разрушена, даже новые рекорды по прибыли перестают вас радовать. Работа превращается в рутину по инерции, что очень быстро приводит к полному выгоранию.</p>
+      </div>
+
+      <div class="st-card" style="background:var(--card); padding:32px; border:1px solid var(--line);">
+        <div style="font-size:32px; color:var(--gold); font-family:var(--serif); line-height:1; opacity:0.5; margin-bottom:16px;">04</div>
+        <h3 style="font-family:var(--serif); font-size:24px; color:var(--ink); margin:0 0 8px;">Социальная опора</h3>
+        <div style="font-size:14px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:16px;">Ваше окружение и команда</div>
+        <p style="color:var(--muted); line-height:1.6; margin:0;">Способность бизнеса работать без вашего постоянного вмешательства. Если все процессы замкнуты на вас, вы не можете расслабиться даже дома в кругу семьи. Сильная команда — это ключ к вашей личной свободе.</p>
       </div>
     </div>
 
@@ -491,29 +450,11 @@
      ══════════════════════════════════ -->
 <section class="cta-section" id="cta">
   <div class="wrap">
-    <div class="cta-inner">
-      <div class="rl cta-left">
-        <h2>Выход из кризиса<br>начинается с диагностики</h2>
-        <p class="cta-lead">Пройдите глубокий тест, чтобы найти пробитую опору вашей системы. Узнайте, куда прямо сейчас утекает ваш ресурс, и получите вектор восстановления.</p>
-        <ul class="cta-steps">
-          <li>Заполните опросник — займёт 6–7 минут</li>
-          <li>Получите карту ресурсов по каждой из четырёх опор</li>
-          <li>Лена разберёт результаты с вами лично</li>
-        </ul>
-        <br>
-        <a href="#cta" class="btn" id="btn-test" style="margin-top:8px;">Пройти диагностику</a>
-      </div>
-      <form action="https://formsubmit.co/diamond.generation108@gmail.com" method="POST" class="rr cta-form">
-        <input type="hidden" name="_subject" value="Новая заявка на разбор (Diamond Generation)">
-        <input type="hidden" name="_next" value="https://gamealmaz56-lab.github.io/diamond-generation/">
-        <div class="cta-form-title">Записаться на диагностическую сессию</div>
-        <div class="fg"><input type="text" name="name" placeholder="Ваше имя" id="f-name" required></div>
-        <div class="fg"><input type="email" name="email" placeholder="Email" id="f-email" required></div>
-        <div class="fg"><input type="tel" name="phone" placeholder="Телефон или WhatsApp (по желанию)" id="f-phone"></div>
-
-        <button type="submit" class="btn" id="btn-submit" style="width:100%;text-align:center;display:block;cursor:pointer;border:none;font:inherit;">Отправить заявку</button>
-        <p class="cta-note">Лена отвечает лично, обычно в течение 24 часов. Данные не передаются третьим лицам.</p>
-      </form>
+    <div class="cta-inner" style="max-width:700px; margin:0 auto; text-align:center; padding:60px 40px; background:var(--navy); border-top:4px solid var(--gold); box-shadow:0 10px 40px rgba(0,0,0,0.2);">
+      <h2 style="margin-bottom:16px; color:#fff;">Выход из кризиса начинается с диагностики</h2>
+      <p class="cta-lead" style="color:rgba(255,255,255,0.7); font-size:18px; margin-bottom:32px; line-height:1.6;">Пройдите глубокий тест, чтобы найти пробитую опору вашей системы. Узнайте, куда прямо сейчас утекает ваш ресурс, и получите вектор восстановления.</p>
+      <a href="test.html" class="btn" style="padding:18px 48px; font-size:16px; display:inline-block; font-weight:600;">ПРОЙТИ ДИАГНОСТИКУ (12 МИН)</a>
+      <p class="cta-note" style="margin-top:24px; font-size:14px; color:rgba(255,255,255,0.5);">Лена разберёт результаты с вами лично.</p>
     </div>
   </div>
 </section>
