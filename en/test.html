@@ -253,29 +253,22 @@ function buildResult(){
       <span>${p.name}<span class="tag" style="color:${bandColor(bi)}">${BANDS[p.key][bi][0]}</span></span>
       <b>${scores[i]}</b></div>
       <div class="bar"><i style="width:${scores[i]}%;background:${bandColor(bi)}"></i></div></div>`;});
-  html+=`<p style="margin:24px 0 0"><b>Your leading leak: ${PILLARS[w1].name.toLowerCase()}, ${scores[w1]} points.</b>
-    ${special?'':(pkey?'Your profile: "'+PROFILES[pkey][0]+'".':'')}
-    Overall system level: ${LEVELS[RES.level][0].toLowerCase()}.</p></div>
-
-  <div class="locked"><div class="verdict"><h3>${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
+  
+  const sprIdx = spread > 30 ? 0 : 1;
+  html+=`<div class="card"><div class="verdict"><h3>Your profile: ${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
     <p>${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1]}</p>
-    <p>${(special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')).slice(0,900)}…</p></div></div>`;
-
-  const peachUrl = \`https://go.peach.talk/KNP1waWT_8I\`;
-
-  html+=`<div class="gate">
-    <h3>Next comes the analysis — here is what you will get</h3>
-    <p class="lead">You have only read the beginning. Next — specifics exactly on your map, not general words:</p>
-    <ul class="gate-list">
-      <li><b>Full decoding of your profile</b> — why exactly this pillar sagged and why the rest are pulled along with it.</li>
-      <li><b>Order of fixing</b> — what to start with first, and what you cannot touch until the first step is closed. A mistake in the order costs months.</li>
-      <li><b>What happens if left as is</b> — a forecast for 3–6 months with your current map.</li>
-      <li><b>Detailed map of your energies</b> — all four pillars, scores, zones to return and check in 3 months.</li>
-      <li><b>Short video about the "4 Pillars" method</b> — how it is fixed systematically, not through motivation and not through a vacation.</li>
-    </ul>
-    <p class="lead" style="margin-top:14px">We have prepared a personal analysis based on your scores. Go to our closed system to get it.</p>
-    <a class="btn" style="width:100%;text-align:center" href="\${peachUrl}">Find out your profile and watch the video</a>
-    <p class="fineprint">The analysis and video will be sent to you instantly.</p>
+    <p>${special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')}</p></div></div>`;
+    
+  html+=`<div class="card"><h3>Overall system level: ${LEVELS[RES.level][0]}</h3>
+    <p>${LEVELS[RES.level][1]}</p></div>`;
+    
+  html+=`<div class="card"><h3>Pillar spread: ${SPREAD[sprIdx][0]}</h3>
+    <p>${SPREAD[sprIdx][1]}</p></div>`;
+    
+  html+=`<div class="card" style="background:var(--navy); color:var(--white); text-align:center;">
+    <h3 style="color:var(--white); margin-bottom:12px;">Ready to start your recovery?</h3>
+    <p style="color:rgba(255,255,255,0.7); margin-bottom:24px;">Book a diagnostic session with Lena Aronov to build a step-by-step recovery plan based on your map.</p>
+    <a class="btn" style="display:inline-block;" href="index.html#cta">BOOK A SESSION</a>
   </div>`;
 
   document.getElementById('result').innerHTML=html;

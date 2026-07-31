@@ -263,25 +263,21 @@ function buildResult(){
     ${special?'':(pkey?'Ваш профиль: «'+PROFILES[pkey][0]+'».':'')}
     Общий уровень системы: ${LEVELS[RES.level][0].toLowerCase()}.</p></div>
 
-  <div class="locked"><div class="verdict"><h3>${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
+  const sprIdx = spread > 30 ? 0 : 1;
+  html+=`<div class="card"><div class="verdict"><h3>Ваш профиль: ${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
     <p>${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1]}</p>
-    <p>${(special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')).slice(0,900)}…</p></div></div>`;
-
-  const peachUrl = `https://go.peach.talk/KNP1waWT_8I`;
-
-  html+=`<div class="gate">
-    <h3>Дальше идёт разбор — вот что вы получите</h3>
-    <p class="lead">Вы прочитали только начало. Дальше — конкретика именно по вашей карте, не общие слова:</p>
-    <ul class="gate-list">
-      <li><b>Полная расшифровка вашего профиля</b> — почему просела именно эта опора и почему остальные тянутся за ней.</li>
-      <li><b>Порядок починки</b> — с чего начинать первым, а что трогать нельзя, пока не закрыт первый шаг. Ошибка в порядке стоит месяцев.</li>
-      <li><b>Что будет, если оставить как есть</b> — прогноз на 3–6 месяцев при вашей текущей карте.</li>
-      <li><b>Детальная карта ваших энергий</b> — все четыре опоры, баллы, зоны, чтобы вернуться и сверить через 3 месяца.</li>
-      <li><b>Короткое видео о методе «4 опоры»</b> — как это чинится системно, не через мотивацию и не через отпуск.</li>
-    </ul>
-    <p class="lead" style="margin-top:14px">Мы подготовили персональный разбор по вашим баллам. Перейдите в нашу закрытую систему, чтобы получить его.</p>
-    <a class="btn" style="width:100%;text-align:center" href="${peachUrl}">Узнать свой профиль и смотреть видео</a>
-    <p class="fineprint">Разбор и видео будут отправлены вам мгновенно.</p>
+    <p>${special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')}</p></div></div>`;
+    
+  html+=`<div class="card"><h3>Общий уровень системы: ${LEVELS[RES.level][0]}</h3>
+    <p>${LEVELS[RES.level][1]}</p></div>`;
+    
+  html+=`<div class="card"><h3>Разброс опор: ${SPREAD[sprIdx][0]}</h3>
+    <p>${SPREAD[sprIdx][1]}</p></div>`;
+    
+  html+=`<div class="card" style="background:var(--navy); color:var(--white); text-align:center;">
+    <h3 style="color:var(--white); margin-bottom:12px;">Готовы начать восстановление?</h3>
+    <p style="color:rgba(255,255,255,0.7); margin-bottom:24px;">Запишитесь на диагностическую сессию с Леной Аронов, чтобы составить пошаговый план выхода из кризиса по вашей карте.</p>
+    <a class="btn" style="display:inline-block;" href="index.html#cta">ЗАПИСАТЬСЯ НА СЕССИЮ</a>
   </div>`;
 
   document.getElementById('result').innerHTML=html;
