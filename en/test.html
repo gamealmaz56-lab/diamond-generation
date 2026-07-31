@@ -81,7 +81,24 @@ a.btn:hover{background:#2c2621}
 .legend td{padding:8px 10px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
 .legend td:first-child{white-space:nowrap;color:var(--gold);font-variant-numeric:tabular-nums}
 .nums{font-size:15px;letter-spacing:.02em}
-@media(max-width:560px){.q{gap:10px}.opts span{width:32px;height:32px}.card,.gate,.verdict{padding:22px}}
+@media(max-width:560px){.q{gap:10px}.opts span{width:32px;height:32px}.card,.gate,.verdict{padding:22px}
+.result-header{padding:30px 20px;}
+.rh-row-top{flex-wrap:wrap;}
+.rh-tag{margin-left:0; margin-top:4px; width:100%; order:3; border:none; padding:0; text-align:left;}
+.rh-score{order:2;}
+}
+.result-header{background:var(--paper); padding:40px 48px; border:1px solid var(--line); margin-bottom:24px;}
+.rh-top{border-bottom:1px solid rgba(0,0,0,0.08); padding-bottom:24px; margin-bottom:32px;}
+.rh-top h2{font-size:32px; margin:0 0 12px; font-weight:400; font-family:var(--serif);}
+.rh-meta{font-size:15px; color:var(--muted); letter-spacing:0.02em; margin:0;}
+.rh-row{margin-bottom:28px;}
+.rh-row:last-child{margin-bottom:0;}
+.rh-row-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+.rh-name{font-size:16px; color:var(--ink);}
+.rh-tag{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:3px 10px; border:1px solid; margin-left:16px; margin-right:auto;}
+.rh-score{font-weight:600; font-size:18px; font-variant-numeric:tabular-nums;}
+.rh-bar-bg{height:12px; background:var(--gold-soft); width:100%;}
+.rh-bar-fill{height:100%; transition:width 1s cubic-bezier(0.2, 0.8, 0.2, 1);}
 </style>
 </head>
 <body>
@@ -247,13 +264,24 @@ function buildResult(){
   RES={scores,total,w1,w2,spread,pkey,special,
     level:total<=100?0:total<=200?1:total<=300?2:3};
 
-  let html=`<div class="card"><h2>Your energy map</h2>
-    <p class="pillar-note">The higher the score, the more the pillar sagged. Maximum 100.</p>`;
+  let html=`<div class="result-header">
+    <div class="rh-top">
+      <h2>Your audit results</h2>
+      <p class="rh-meta">${scores[0]} · ${scores[1]} · ${scores[2]} · ${scores[3]} — mental · physical · spiritual · social. Total ${total} out of 400.</p>
+    </div>
+    <div class="rh-bars">`;
+    
   PILLARS.forEach((p,i)=>{const bi=bandIdx(scores[i]);
-    html+=`<div class="bar-row"><div class="bar-top">
-      <span>${p.name}<span class="tag" style="color:${bandColor(bi)}">${BANDS[p.key][bi][0]}</span></span>
-      <b>${scores[i]}</b></div>
-      <div class="bar"><i style="width:${scores[i]}%;background:${bandColor(bi)}"></i></div></div>`;});
+    html+=`<div class="rh-row">
+      <div class="rh-row-top">
+        <span class="rh-name">${p.name}</span>
+        <span class="rh-tag" style="color:${bandColor(bi)};border-color:${bandColor(bi)}">${BANDS[p.key][bi][0]}</span>
+        <span class="rh-score">${scores[i]}</span>
+      </div>
+      <div class="rh-bar-bg"><div class="rh-bar-fill" style="width:${scores[i]}%;background:${bandColor(bi)}"></div></div>
+    </div>`;});
+    
+  html+=`</div></div>`;
   
   const sprIdx = spread > 30 ? 0 : 1;
   html+=`<div class="card"><div class="verdict"><h3>Your profile: ${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
