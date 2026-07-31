@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIAMOND GENERATION · Программа «4 опоры» · Лена Аронов</title>
+<meta name="description" content="Программа «4 опоры» — восстановление энергии и ясности для руководителей. Лена Аронов, психосоматолог.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     HEADER
+     ══════════════════════════════════ -->
+<header class="hdr">
+  <div class="hdr-in">
+    <!-- DIAMOND GENERATION logo -->
+    <div class="logo">
+      <div class="logo-diamond">
+        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="17,2 32,14 17,32 2,14" fill="none" stroke="#b8882e" stroke-width="1"/>
+          <polygon points="17,7 28,14 17,27 6,14" fill="none" stroke="#b8882e" stroke-width=".7" opacity=".5"/>
+          <line x1="2" y1="14" x2="32" y2="14" stroke="#b8882e" stroke-width=".7" opacity=".4"/>
+          <line x1="17" y1="2" x2="6" y2="14" stroke="#b8882e" stroke-width=".7" opacity=".35"/>
+          <line x1="17" y1="2" x2="28" y2="14" stroke="#b8882e" stroke-width=".7" opacity=".35"/>
+          <circle cx="17" cy="14" r="1.5" fill="#b8882e" opacity=".6"/>
+        </svg>
+      </div>
+      <div class="logo-text">Diamond Generation</div>
+    </div>
+
+    <nav><ul class="nav">
+      <li><a href="#signs">Симптомы</a></li>
+      <li><a href="#pillars">Метод</a></li>
+      <li><a href="#author">Автор</a></li>
+      <li><a href="#testi">Отзывы</a></li>
+      <li><a href="#formats">Форматы</a></li>
+    </ul></nav>
+
+    <div class="hdr-right">
+      <span id="clock"></span>
+      <a href="#cta" class="btn" id="btn-nav">Диагностика</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════
+     HERO
+     ══════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="rl">
+        <div class="hero-kicker"><span></span>Программа восстановления лидера</div>
+        <h1>ВЕРНУТЬ<br>РЕСУРС<br><em>Без остановки бизнеса</em></h1>
+        <p class="hero-lead">«4 опоры» — системный метод для собственников и руководителей, которые давно работают на износ. Не коучинг. Не терапия. Технология восстановления, построенная на стыке психосоматики, нейронауки и стратегии.</p>
+        <p class="hero-byline">Лена Аронов · психосоматолог, кандидат наук · 25 лет практики</p>
+        <a href="#cta" class="btn" id="btn-hero">Пройти диагностику</a>
+        <p class="hero-note">Персональная карта ресурсов по четырём опорам — сразу после прохождения</p>
+      </div>
+      <div class="rr hero-photo-col">
+        <div class="hero-photo-frame">
+          <div class="hpc tl"></div><div class="hpc tr"></div>
+          <div class="hpc bl"></div><div class="hpc br"></div>
+          <img src="photo.jpg" alt="Лена Аронов">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     STATS
+     ══════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat r">
+      <div class="stat-n">25</div>
+      <div class="stat-title">Лет практики</div>
+      <p class="stat-desc">Психосоматика, работа с руководителями в кризисе</p>
+    </div>
+    <div class="stat r" style="transition-delay:.1s">
+      <div class="stat-n">2000<sup>+</sup></div>
+      <div class="stat-title">Руководителей</div>
+      <p class="stat-desc">Восстановили ресурс по методике четырёх опор</p>
+    </div>
+    <div class="stat r" style="transition-delay:.2s">
+      <div class="stat-n">1800<sup>+</sup></div>
+      <div class="stat-title">Часов</div>
+      <p class="stat-desc">Индивидуальной работы один на один</p>
+    </div>
+    <div class="stat r" style="transition-delay:.3s">
+      <div class="stat-n">6</div>
+      <div class="stat-title">Недель</div>
+      <p class="stat-desc">До измеримых изменений в энергии, сне и ясности</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     АВТОР
+     ══════════════════════════════════ -->
+<section class="author" id="author">
+  <div class="wrap">
+    <div class="author-grid">
+      <!-- фото слева -->
+      <div class="rl author-photo-wrap">
+        <div class="author-photo-frame">
+          <img src="photo2.jpg" alt="Лена Аронов">
+        </div>
+        <div class="author-badge">25 лет практики</div>
+      </div>
+      <!-- текст справа -->
+      <div class="rr author-text">
+        <div class="author-eyebrow">Кто ведёт программу</div>
+        <h2>Лена Аронов</h2>
+        <p class="author-subtitle">Психосоматолог. Кандидат наук. Практик.</p>
+        <div class="author-bio">
+          <p>Лена не строила систему «4 опоры» в кабинете — она собирала её под собой, когда земля ушла из-под ног. В 2013 году: банкротство с личным долгом в $2 млн, потеря четырёх близких людей за один год, диагноз «кистоз костей третьей стадии» и пять операций. Прогноз врачей — неизбежная инвалидность.</p>
+          <p>Ни одна из существующих методик не давала результата в таком сочетании факторов. Тогда она начала разрабатывать собственную систему — используя образование в области психосоматики, философию, нейронауку и практику Адизеса. Через несколько месяцев — полная ремиссия. Без инвалидного кресла.</p>
+          <p><strong>С тех пор этот метод прошли более 2000 руководителей.</strong> Не потому что он красиво упакован. Потому что он работает там, где человеку не до красивых слов.</p>
+        </div>
+        <!-- Регалии — горизонтальные строки с годом -->
+        <div class="creds r">
+          <div class="cred-row">
+            <div class="cred-year">1998</div>
+            <div class="cred-text">Образование в области психосоматологии и неонатологии</div>
+          </div>
+          <div class="cred-row">
+            <div class="cred-year">2005</div>
+            <div class="cred-text">Кандидат философских наук · диссертация по философии буддизма</div>
+          </div>
+          <div class="cred-row">
+            <div class="cred-year">2011</div>
+            <div class="cred-text">Региональный директор Института Адизеса · аккредитованный специалист</div>
+          </div>
+          <div class="cred-row">
+            <div class="cred-year">2015</div>
+            <div class="cred-text">Команда Майкла Роуча · 34 курса в Diamond College</div>
+          </div>
+          <div class="cred-row">
+            <div class="cred-year">—</div>
+            <div class="cred-text">Программа Джо Диспензы · кейс описан на его официальном сайте</div>
+          </div>
+          <div class="cred-row">
+            <div class="cred-year">—</div>
+            <div class="cred-text">1800+ часов индивидуальной работы · 2000+ человек восстановили ресурс</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     СИМПТОМЫ
+     ══════════════════════════════════ -->
+<section class="signs" id="signs">
+  <div class="wrap">
+    <div class="signs-eyebrow r">Самодиагностика</div>
+    <h2 class="r">Проверьте себя<br>Три из пяти — вы на пределе</h2>
+
+    <ul class="signs-list">
+      <li class="sign-row r">
+        <div class="sign-idx">01</div>
+        <div>
+          <h3>Паралич стратегических решений</h3>
+          <p>Важные вопросы лежат неделями. Не потому что нет информации — потому что мозг не вытягивает. Вы тонете в операционке, а стратегия стоит на месте.</p>
+        </div>
+      </li>
+      <li class="sign-row r" style="transition-delay:.07s">
+        <div class="sign-idx">02</div>
+        <div>
+          <h3>Просыпаетесь среди ночи — и не можете остановить голову</h3>
+          <p>3–4 утра. Мозг сам по себе возвращается к рабочим сценариям — как будто продолжает смену, которую вы не объявляли. Выключить усилием воли невозможно.</p>
+        </div>
+      </li>
+      <li class="sign-row r" style="transition-delay:.14s">
+        <div class="sign-idx">03</div>
+        <div>
+          <h3>Достигаете цели — и не чувствуете ничего</h3>
+          <p>Закрыли сделку, дошли до цифры квартала — и вместо радости глухая усталость и пустота. Побеждать больно не меньше, чем проигрывать. Это не лень — это сигнал системы.</p>
+        </div>
+      </li>
+      <li class="sign-row r" style="transition-delay:.21s">
+        <div class="sign-idx">04</div>
+        <div>
+          <h3>Дома вы есть, но вас нет</h3>
+          <p>С семьёй говорите коротко, по делу — чтобы не тратить ресурс. Разговоры стали похожи на рабочие задачи. Близкие это чувствуют. Вы тоже, но сделать ничего не можете.</p>
+        </div>
+      </li>
+      <li class="sign-row r" style="transition-delay:.28s">
+        <div class="sign-idx">05</div>
+        <div>
+          <h3>Голова не варит так, как раньше</h3>
+          <p>Перечитываете письмо три раза — и всё равно не можете сформулировать ответ. Простые задачи занимают вдвое больше времени. Объясняете «плохим днём», но хороших всё меньше.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Вывод визуально прикреплён к списку — без отрыва -->
+    <div class="signs-verdict r">
+      <p>Если узнали три и больше — вы не просто устали. <strong>Вы на пределе.</strong> Запас прочности не заканчивается постепенно. Он заканчивается сразу. И именно для этого существует программа «4 опоры».</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ПОЧЕМУ НЕ СРАБОТАЛО
+     ══════════════════════════════════ -->
+<section class="why">
+  <div class="wrap">
+    <h2 class="r">То, что вы уже пробовали<br>И почему не удержалось</h2>
+    <div class="why-grid r">
+      <div class="why-card">
+        <span class="why-card-deco">01</span>
+        <h3>Отпуск</h3>
+        <p>Работает ровно до возвращения. На седьмой день после перелёта операционный хаос берёт своё. Отдых восполняет запас — но не меняет структуру мышления, которая этот запас расходует.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-card-deco">02</span>
+        <h3>Психотерапия</h3>
+        <p>Важна и нужна — но слишком медленна. Лидер с расписанным на квартал вперёд календарём не может ждать полтора года, чтобы научиться спать. Нужен другой инструмент.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-card-deco">03</span>
+        <h3>Ретриты</h3>
+        <p>Редкая, ценная тишина — которая заканчивается вместе с трансфером в аэропорт. Правила игры в вашей системе не изменились. Вы возвращаетесь в тот же котёл с чуть большим запасом терпения.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-card-deco">04</span>
+        <h3>Биохакинг</h3>
+        <p>Трекеры, протоколы, БАДы дают данные — но не дают ясности. Вы знаете, что спите плохо. Таблица подтверждает. Причина остаётся прежней. Измерять симптом — не значит лечить систему.</p>
+      </div>
+    </div>
+    <p class="why-conclusion r">
+      Все они работают с симптомами по отдельности. Но состояние лидера — это система на четырёх основаниях. Пока они не восстановлены последовательно, точечные вмешательства дают временный эффект.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ЧЕТЫРЕ ОПОРЫ
+     ══════════════════════════════════ -->
+<section class="pillars" id="pillars">
+  <div class="wrap">
+    <div class="pillars-eyebrow">Методология</div>
+    <h2 class="r">Четыре опоры</h2>
+    <div class="eco-grid">
+      <div class="wheel-wrap rl" id="wheelWrap">
+        <svg class="wheel-svg" viewBox="-230 -230 460 460" role="img" aria-label="Колесо четырёх опор">
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255, 215, 0, 0.6)"/>
+              <stop offset="100%" stop-color="rgba(255, 215, 0, 0)"/>
+            </radialGradient>
+            <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255, 215, 0, 0.5)"/>
+              <stop offset="100%" stop-color="rgba(255, 215, 0, 0)"/>
+            </radialGradient>
+          </defs>
+          <!-- Rings -->
+          <circle class="wr" r="160" fill="none" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
+          <!-- Spokes -->
+          <line class="ws" x1="0" y1="0" x2="0" y2="-160" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
+          <line class="ws" x1="0" y1="0" x2="160" y2="0" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
+          <line class="ws" x1="0" y1="0" x2="0" y2="160" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
+          <line class="ws" x1="0" y1="0" x2="-160" y2="0" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4"/>
+          <!-- Center glow and text -->
+          <circle r="90" fill="url(#glow)"/>
+          <circle r="50" fill="#fff9e6"/>
+          <text y="-5" fill="#111" font-family="'Playfair Display',Georgia,serif" font-size="20" text-anchor="middle" dominant-baseline="middle" font-style="italic">Лидер</text>
+          <text y="16" fill="#333" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" dominant-baseline="middle">в балансе</text>
+          <!-- Node 0: top -->
+          <g class="wn on" data-i="0" transform="translate(0,-160)" id="wn0">
+            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
+            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">01</text>
+            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">МЕНТАЛЬ-</text>
+            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">НАЯ</text>
+          </g>
+          <!-- Node 1: right -->
+          <g class="wn" data-i="1" transform="translate(160,0)" id="wn1">
+            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
+            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">02</text>
+            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">ФИЗИЧЕ-</text>
+            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">СКАЯ</text>
+          </g>
+          <!-- Node 2: bottom -->
+          <g class="wn" data-i="2" transform="translate(0,160)" id="wn2">
+            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
+            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">03</text>
+            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">ДУХОВ-</text>
+            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">НАЯ</text>
+          </g>
+          <!-- Node 3: left -->
+          <g class="wn" data-i="3" transform="translate(-160,0)" id="wn3">
+            <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
+            <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">04</text>
+            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">СОЦИАЛЬ-</text>
+            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">НАЯ</text>
+          </g>
+        </svg>
+      </div>
+      <div class="pillar-panel rr" id="pillarPanel">
+        <div class="pp-num" id="ppNum">01</div>
+        <div class="pp-title" id="ppTitle">Ментальная опора</div>
+        <div class="pp-role" id="ppRole">Качество вашего мышления</div>
+        <p class="pp-body" id="ppBody">Сколько энергии тратит один управленческий выбор. При просадке вы часами прокручиваете одни и те же сценарии, не можете остановить внутренний контроль и буксуете на простых развилках. Думать стоит дороже, чем когда-либо.</p>
+        <p class="pp-hint">← Нажмите на любую опору</p>
+      </div>
+    </div>
+    <p class="pillars-note r">
+      Порядок восстановления фиксированный: мышление → тело → смысл → окружение. Начинать со структуры делегирования, пока голова в шуме, бесполезно — вы примете те же решения, которые привели к выгоранию.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ОТЗЫВЫ
+     ══════════════════════════════════ -->
+<section class="testi" id="testi">
+  <div class="wrap">
+    <h2 class="r">Истории тех, кто прошёл программу</h2>
+    <div class="testi-list">
+
+      <div class="testi-card r">
+        <div class="testi-quote-col">
+          <span class="testi-quote-mark">"</span>
+          <div class="testi-quote-text">Я семь лет была узким местом собственной компании и называла это ответственностью.</div>
+        </div>
+        <div class="testi-meta-col">
+          <div class="testi-name">Елена, 42 года</div>
+          <div class="testi-role">Основатель, 50 сотрудников</div>
+          <div class="testi-results">
+            <div class="testi-result-item">делегировано 70% задач</div>
+            <div class="testi-result-item">доход вырос вдвое</div>
+            <div class="testi-result-item">давление 160/100 → норма</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card r" style="transition-delay:.1s">
+        <div class="testi-quote-col">
+          <span class="testi-quote-mark">"</span>
+          <div class="testi-quote-text">Чек в закрытых сделках вырос в 5–10 раз при том же количестве встреч. Я просто перестал терять главное в разговоре.</div>
+        </div>
+        <div class="testi-meta-col">
+          <div class="testi-name">Виктор, 38 лет</div>
+          <div class="testi-role">Собственник, B2B-компания</div>
+          <div class="testi-results">
+            <div class="testi-result-item">конверсия сделок × 5–10</div>
+            <div class="testi-result-item">операционка передана команде</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card r" style="transition-delay:.2s">
+        <div class="testi-quote-col">
+          <span class="testi-quote-mark">"</span>
+          <div class="testi-quote-text">Через три недели я впервые за два года проснулся раньше будильника. Это мелочь — но она изменила всё остальное.</div>
+        </div>
+        <div class="testi-meta-col">
+          <div class="testi-name">Андрей, 45 лет</div>
+          <div class="testi-role">CEO, холдинговая структура</div>
+          <div class="testi-results">
+            <div class="testi-result-item">качество сна восстановлено</div>
+            <div class="testi-result-item">стратегические сессии возобновлены</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ФОРМАТЫ
+     ══════════════════════════════════ -->
+<section class="formats" id="formats">
+  <div class="wrap">
+    <h2 class="r">Выберите формат участия</h2>
+    <div class="formats-grid">
+
+      <div class="fmt featured r" style="transition-delay:.05s">
+        <div class="fmt-badge">Популярный выбор</div>
+        <h3>Группа</h3>
+        <div class="fmt-sub">Мастермайнд · 6 недель · 10–12 участников</div>
+        <div class="fmt-price">$3 000</div>
+        <ul class="fmt-list">
+          <li>Оцифровка вашей карты ресурсов по четырём опорам</li>
+          <li>Еженедельные живые сессии: структура, протоколы, разборы</li>
+          <li>Индивидуальная стратегическая сессия с Леной Аронов</li>
+          <li>Закрытый чат поддержки — ответ в течение 24 часов</li>
+          <li>Пожизненный доступ к записям всех сессий</li>
+          <li>Членство в закрытом сообществе выпускников</li>
+        </ul>
+        <div class="fmt-limit">5 потоков в год. Набор закрывается за 7 дней до старта.</div>
+      </div>
+
+      <div class="fmt r" style="transition-delay:.15s">
+        <div class="fmt-badge">Конфиденциально</div>
+        <h3>Индивидуально</h3>
+        <div class="fmt-sub">Личное наставничество · 6 недель + 3 мес. сопровождения</div>
+        <div class="fmt-price">$10 000</div>
+        <ul class="fmt-list">
+          <li>Шесть персональных сессий глубокой проработки</li>
+          <li>Две сессии с командой: аудит и делегирование</li>
+          <li>Три сессии интеграции после завершения программы</li>
+          <li>Полная конфиденциальность</li>
+        </ul>
+        <div class="fmt-limit">Не более 3 клиентов в месяц под личным ведением Лены.</div>
+      </div>
+
+      <div class="fmt r" style="transition-delay:.25s">
+        <div class="fmt-badge">Эксклюзивно</div>
+        <h3>Личная неделя</h3>
+        <div class="fmt-sub">Стратегический интенсив · 7 дней · тет-а-тет</div>
+        <div class="fmt-price">$25 000</div>
+        <ul class="fmt-list">
+          <li>Всю неделю Лена работает только с вами</li>
+          <li>Все четыре опоры + реструктуризация бизнеса</li>
+          <li>Личная и бизнес-стратегия на год с измеримыми KPI</li>
+          <li>Для кризисов, где результат нужен немедленно</li>
+        </ul>
+        <div class="fmt-limit">Одно место в квартал. Только по предварительному согласованию.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     КАК НАЧАТЬ
+     ══════════════════════════════════ -->
+<section class="howto">
+  <div class="wrap">
+    <h2 class="r">Как начать</h2>
+    <div class="steps">
+      <div class="step r">
+        <div class="step-num">Шаг 01</div>
+        <h3>Диагностика</h3>
+        <p>Структурированный опросник по четырём опорам. Вы получаете числовую оценку по каждой и понимаете, где именно находится критическая просадка прямо сейчас.</p>
+      </div>
+      <div class="step r" style="transition-delay:.1s">
+        <div class="step-num">Шаг 02</div>
+        <h3>Разговор с Леной</h3>
+        <p>Личный разбор результатов диагностики. Определяем приоритет восстановления и оптимальный формат работы. Если программа не подходит — Лена скажет прямо.</p>
+      </div>
+      <div class="step r" style="transition-delay:.2s">
+        <div class="step-num">Шаг 03</div>
+        <h3>Бронирование места</h3>
+        <p>$200 за резервирование. Сумма засчитывается в полную стоимость программы при старте.</p>
+      </div>
+    </div>
+    <div class="guarantee r">
+      <b>Если к концу второй недели нет изменений</b>
+      <p>в качестве сна, ясности решений или уровне энергии — вы получаете две дополнительные сессии без доплаты. Единственное условие: практики выполнялись согласно протоколу.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CTA — ДИАГНОСТИКА
+     ══════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="rl cta-left">
+        <h2>Начните с диагностики<br>Не с решения</h2>
+        <p class="cta-lead">Диагностика покажет, какая из четырёх опор находится в критическом состоянии прямо сейчас — и с чего именно начинать.</p>
+        <ul class="cta-steps">
+          <li>Заполните опросник — займёт 10–12 минут</li>
+          <li>Получите карту ресурсов по каждой из четырёх опор</li>
+          <li>Лена разберёт результаты с вами лично</li>
+        </ul>
+        <br>
+        <a href="#cta" class="btn" id="btn-test" style="margin-top:8px;">Пройти диагностику</a>
+      </div>
+      <form action="https://formsubmit.co/diamond.generation108@gmail.com" method="POST" class="rr cta-form">
+        <input type="hidden" name="_subject" value="Новая заявка на разбор (Diamond Generation)">
+        <div class="cta-form-title">Записаться на разговор с Леной</div>
+        <div class="fg"><input type="text" name="name" placeholder="Ваше имя" id="f-name" required></div>
+        <div class="fg"><input type="tel" name="phone" placeholder="Телефон или WhatsApp" id="f-phone" required></div>
+        <div class="fg"><input type="text" name="role" placeholder="Ваша роль / компания" id="f-role"></div>
+        <div class="fg"><textarea name="message" rows="3" placeholder="Коротко — что происходит?" id="f-msg"></textarea></div>
+        <button type="submit" class="btn" id="btn-submit" style="width:100%;text-align:center;display:block;cursor:pointer;border:none;font:inherit;">Отправить заявку</button>
+        <p class="cta-note">Лена отвечает лично, обычно в течение 24 часов. Данные не передаются третьим лицам.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+     ══════════════════════════════════ -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="12,1 23,10 12,23 1,10" fill="none" stroke="#b8882e" stroke-width=".8"/>
+        <polygon points="12,5 20,10 12,20 4,10" fill="none" stroke="#b8882e" stroke-width=".5" opacity=".5"/>
+        <line x1="1" y1="10" x2="23" y2="10" stroke="#b8882e" stroke-width=".5" opacity=".4"/>
+      </svg>
+      <span class="footer-logo-text">Diamond Generation</span>
+    </div>
+    <div class="footer-copy">Лена Аронов · психосоматолог · © 2025</div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════
+     JS
+     ══════════════════════════════════ -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
