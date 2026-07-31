@@ -508,7 +508,7 @@ h2{
 .fmt h3{
   font-family:var(--serif);font-size:28px;font-weight:400;color:var(--ink);
   margin-bottom:16px; line-height:1.3;
-  min-height: 76px; /* 2 lines */
+  height: 80px;
 }
 .fmt.featured h3{color:var(--white);}
 .fmt-sub{
