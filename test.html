@@ -262,7 +262,7 @@ function buildResult(){
       <div class="bar"><i style="width:${scores[i]}%;background:${bandColor(bi)}"></i></div></div>`;});
   html+=`<p style="margin:24px 0 0"><b>Ваша ведущая утечка: ${PILLARS[w1].name.toLowerCase()}, ${scores[w1]} баллов.</b>
     ${special?'':(pkey?'Ваш профиль: «'+PROFILES[pkey][0]+'».':'')}
-    Общий уровень системы: ${LEVELS[RES.level][0].toLowerCase()}.</p></div>
+    Общий уровень системы: ${LEVELS[RES.level][0].toLowerCase()}.</p></div>`;
 
   const sprIdx = spread > 30 ? 0 : 1;
   html+=`<div class="card"><div class="verdict"><h3>Ваш профиль: ${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
