@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -288,48 +288,50 @@
           <!-- Center glow and text -->
           <circle r="90" fill="url(#glow)"/>
           <circle r="50" fill="#fff9e6"/>
-          <text y="-5" fill="#111" font-family="'Playfair Display',Georgia,serif" font-size="20" text-anchor="middle" dominant-baseline="middle" font-style="italic">Лидер</text>
-          <text y="16" fill="#333" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" dominant-baseline="middle">в балансе</text>
+          <text y="-5" fill="#111" font-family="'Playfair Display',Georgia,serif" font-size="26" text-anchor="middle" dominant-baseline="middle" font-style="italic">Лидер</text>
+          <text y="18" fill="#333" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" dominant-baseline="middle">в балансе</text>
           <!-- Node 0: top -->
           <g class="wn on" data-i="0" transform="translate(0,-160)" id="wn0">
             <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
             <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">01</text>
-            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">МЕНТАЛЬ-</text>
-            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">НАЯ</text>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">01</text>
+            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">МЕНТАЛЬ-</text>
+            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">НАЯ</text>
           </g>
           <!-- Node 1: right -->
           <g class="wn" data-i="1" transform="translate(160,0)" id="wn1">
             <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
             <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">02</text>
-            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">ФИЗИЧЕ-</text>
-            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">СКАЯ</text>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">02</text>
+            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">ФИЗИЧЕ-</text>
+            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">СКАЯ</text>
           </g>
           <!-- Node 2: bottom -->
           <g class="wn" data-i="2" transform="translate(0,160)" id="wn2">
             <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
             <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">03</text>
-            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">ДУХОВ-</text>
-            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">НАЯ</text>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">03</text>
+            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">ДУХОВ-</text>
+            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">НАЯ</text>
           </g>
           <!-- Node 3: left -->
           <g class="wn" data-i="3" transform="translate(-160,0)" id="wn3">
             <circle class="glow-bg" r="55" fill="url(#node-glow)" style="opacity:0; transition: opacity .3s;"/>
             <circle class="bg" r="38" fill="#1c2530" stroke="#b8882e" stroke-width="1"/>
-            <text class="num" x="0" y="-12" fill="#b8882e" font-size="10">04</text>
-            <text class="lbl" x="0" y="3" fill="#fff" font-size="9">СОЦИАЛЬ-</text>
-            <text class="lbl" x="0" y="14" fill="#fff" font-size="9">НАЯ</text>
+            <text class="num" x="0" y="-12" fill="#b8882e" font-size="12">04</text>
+            <text class="lbl" x="0" y="5" fill="#fff" font-size="11">СОЦИАЛЬ-</text>
+            <text class="lbl" x="0" y="18" fill="#fff" font-size="11">НАЯ</text>
           </g>
         </svg>
+        <div style="text-align: center; margin-top: 16px;">
+          <span style="font-size: 14px; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px dashed var(--gold); cursor: pointer;" onclick="document.querySelector('.wheel-svg').scrollIntoView({behavior: 'smooth'})">Нажмите на любую опору</span>
+        </div>
       </div>
       <div class="pillar-panel rr" id="pillarPanel">
         <div class="pp-num" id="ppNum">01</div>
         <div class="pp-title" id="ppTitle">Ментальная опора</div>
         <div class="pp-role" id="ppRole">Качество вашего мышления</div>
         <p class="pp-body" id="ppBody">Сколько энергии тратит один управленческий выбор. При просадке вы часами прокручиваете одни и те же сценарии, не можете остановить внутренний контроль и буксуете на простых развилках. Думать стоит дороже, чем когда-либо.</p>
-        <p class="pp-hint">👆 Нажмите на любую опору на схеме</p>
       </div>
     </div>
 
