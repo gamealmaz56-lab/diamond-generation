@@ -105,8 +105,8 @@ a.btn:hover{background:#2c2621}
 
 <header><div class="wrap">
   <p class="eyebrow">The "4 Pillars" Method · Lena Aronov</p>
-  <h1>Current State Audit</h1>
-  <p class="sub">Diagnostics that will reveal your hidden resource leaks and pinpoint the broken pillar.</p>
+  <h1>Energy map</h1>
+  <p class="sub">12 questions in each pillar, which show which of the four pillars has sagged and where your energy goes.</p>
 </div></header>
 
 <div class="wrap">
@@ -123,7 +123,7 @@ a.btn:hover{background:#2c2621}
       <tr><td>2</td><td>Sometimes</td></tr><tr><td>3</td><td>Often</td></tr>
       <tr><td>4</td><td>Almost always</td></tr>
     </table>
-    <div class="nav"><span class="counter">4 blocks of 12 questions</span>
+    <div class="nav">
       <button class="primary" onclick="go(1)">Start</button></div>
   </section>
 
@@ -284,20 +284,50 @@ function buildResult(){
   html+=`</div></div>`;
   
   const sprIdx = spread > 30 ? 0 : 1;
-  html+=`<div class="card"><div class="verdict"><h3>Your profile: ${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
+  html+=`<div class="card">
+    <h2>Overall system level: ${LEVELS[RES.level][0]}</h2>
+    <p>${LEVELS[RES.level][1]}</p>
+  </div>`;
+  
+  html+=`<div class="card">
+    <h2>${PILLARS[w1].name}: ${scores[w1]} points. Your main leak</h2>
     <p>${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1]}</p>
-    <p>${special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')}</p></div></div>`;
-    
-  html+=`<div class="card"><h3>Overall system level: ${LEVELS[RES.level][0]}</h3>
-    <p>${LEVELS[RES.level][1]}</p></div>`;
-    
-  html+=`<div class="card"><h3>Pillar spread: ${SPREAD[sprIdx][0]}</h3>
-    <p>${SPREAD[sprIdx][1]}</p></div>`;
-    
-  html+=`<div class="card" style="background:var(--navy); color:var(--white); text-align:center;">
-    <h3 style="color:var(--white); margin-bottom:12px;">Ready to start your recovery?</h3>
-    <p style="color:rgba(255,255,255,0.7); margin-bottom:24px;">Book a diagnostic session with Lena Aronov to build a step-by-step recovery plan based on your map.</p>
-    <a class="btn" style="display:inline-block;" href="index.html#cta">BOOK A SESSION</a>
+  </div>`;
+  
+  if (special || pkey) {
+    let affectedPillars = '';
+    if (pkey) {
+      const keys = pkey.split('');
+      affectedPillars = PILLARS.find(p=>p.key===keys[0]).name + ' and ' + (PILLARS.find(p=>p.key===keys[1]).name).toLowerCase();
+    }
+    html+=`<div class="card">
+      <h2>Your profile: ${special?SPECIAL[special][0]:PROFILES[pkey][0]}</h2>
+      ${affectedPillars ? `<h3 style="margin-top:0; color:var(--gold);">${affectedPillars}</h3>` : ''}
+      <p>${special?SPECIAL[special][1]:PROFILES[pkey][1]}</p>
+    </div>`;
+  }
+  
+  html+=`<div class="card">
+    <h2>Pillar spread: ${SPREAD[sprIdx][0]}</h2>
+    <p>${SPREAD[sprIdx][1]}</p>
+  </div>`;
+  
+  html+=`<div class="card">
+    <h2>How to read the ranges</h2>
+    <table class="legend" style="margin-top:16px;">
+      <tr><td>0–25</td><td><b>Pillar holds.</b> Resource is present, this part of the system works for you.</td></tr>
+      <tr><td>26–50</td><td><b>First cracks.</b> Coping on reserves, not recovery.</td></tr>
+      <tr><td>51–75</td><td><b>Pillar sagged.</b> The main chunk of energy leaks here.</td></tr>
+      <tr><td>76–100</td><td><b>Pillar collapsed.</b> The body and psyche are in emergency mode.</td></tr>
+    </table>
+    <p style="margin-top:16px; font-size:14px; color:var(--muted);">A high score doesn't mean something is wrong with you. It means the system is operating in overload in this specific area.</p>
+  </div>`;
+  
+  html+=`<div class="card" style="text-align:center;">
+    <h2>The audit showed where it sagged</h2>
+    <p style="margin-bottom:24px;">It does not show why this happened specifically to you or what to do in your situation. Next is a short video about the "4 Pillars" method: how the system works and what to do with the leak you've found. After the video, you can sign up for a free diagnostic session.</p>
+    <a class="btn" style="display:inline-block; margin-bottom:16px; font-weight:600;" href="https://go.peach.talk/KNP1waWT_8I">WATCH VIDEO</a>
+    <p style="color:var(--muted); font-size:14px;">Take your four numbers to the session: <b style="color:var(--ink);">${scores[0]} · ${scores[1]} · ${scores[2]} · ${scores[3]}</b></p>
   </div>`;
 
   document.getElementById('result').innerHTML=html;

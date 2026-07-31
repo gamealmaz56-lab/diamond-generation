@@ -106,8 +106,8 @@ a.btn:hover{background:#2c2621}
 
 <header><div class="wrap">
   <p class="eyebrow">Метод «4 опоры» · Лена Аронов</p>
-  <h1>Аудит текущего состояния</h1>
-  <p class="sub">Диагностика, которая покажет ваши скрытые утечки ресурса и точно определит просевшую опору.</p>
+  <h1>Карта энергий</h1>
+  <p class="sub">12 вопросов в каждой опоре, которые показывают, какая из четырёх опор просела и куда уходит ваша энергия.</p>
 </div></header>
 
 <div class="wrap">
@@ -124,7 +124,7 @@ a.btn:hover{background:#2c2621}
       <tr><td>2</td><td>Иногда</td></tr><tr><td>3</td><td>Часто</td></tr>
       <tr><td>4</td><td>Почти всегда</td></tr>
     </table>
-    <div class="nav"><span class="counter">4 блока по 12 вопросов</span>
+    <div class="nav">
       <button class="primary" onclick="go(1)">Начать</button></div>
   </section>
 
@@ -290,20 +290,50 @@ function buildResult(){
   html+=`</div></div>`;
 
   const sprIdx = spread > 30 ? 0 : 1;
-  html+=`<div class="card"><div class="verdict"><h3>Ваш профиль: ${special?SPECIAL[special][0]:(pkey?PROFILES[pkey][0]:PILLARS[w1].name)}</h3>
+  html+=`<div class="card">
+    <h2>Уровень системы: ${LEVELS[RES.level][0]}</h2>
+    <p>${LEVELS[RES.level][1]}</p>
+  </div>`;
+  
+  html+=`<div class="card">
+    <h2>${PILLARS[w1].name}: ${scores[w1]} баллов. Ваша главная утечка</h2>
     <p>${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1]}</p>
-    <p>${special?SPECIAL[special][1]:(pkey?PROFILES[pkey][1]:'')}</p></div></div>`;
-    
-  html+=`<div class="card"><h3>Общий уровень системы: ${LEVELS[RES.level][0]}</h3>
-    <p>${LEVELS[RES.level][1]}</p></div>`;
-    
-  html+=`<div class="card"><h3>Разброс опор: ${SPREAD[sprIdx][0]}</h3>
-    <p>${SPREAD[sprIdx][1]}</p></div>`;
-    
-  html+=`<div class="card" style="background:var(--navy); color:var(--white); text-align:center;">
-    <h3 style="color:var(--white); margin-bottom:12px;">Готовы начать восстановление?</h3>
-    <p style="color:rgba(255,255,255,0.7); margin-bottom:24px;">Запишитесь на диагностическую сессию с Леной Аронов, чтобы составить пошаговый план выхода из кризиса по вашей карте.</p>
-    <a class="btn" style="display:inline-block;" href="index.html#cta">ЗАПИСАТЬСЯ НА СЕССИЮ</a>
+  </div>`;
+  
+  if (special || pkey) {
+    let affectedPillars = '';
+    if (pkey) {
+      const keys = pkey.split('');
+      affectedPillars = PILLARS.find(p=>p.key===keys[0]).name + ' и ' + (PILLARS.find(p=>p.key===keys[1]).name).toLowerCase();
+    }
+    html+=`<div class="card">
+      <h2>Ваш профиль: ${special?SPECIAL[special][0]:PROFILES[pkey][0]}</h2>
+      ${affectedPillars ? `<h3 style="margin-top:0; color:var(--gold);">${affectedPillars}</h3>` : ''}
+      <p>${special?SPECIAL[special][1]:PROFILES[pkey][1]}</p>
+    </div>`;
+  }
+  
+  html+=`<div class="card">
+    <h2>Характер просадки: ${SPREAD[sprIdx][0]}</h2>
+    <p>${SPREAD[sprIdx][1]}</p>
+  </div>`;
+  
+  html+=`<div class="card">
+    <h2>Как читать диапазоны</h2>
+    <table class="legend" style="margin-top:16px;">
+      <tr><td>0–25</td><td><b>Опора держит.</b> Ресурс есть, эта часть системы работает на вас.</td></tr>
+      <tr><td>26–50</td><td><b>Первые трещины.</b> Справляетесь за счёт запаса, а не восстановления.</td></tr>
+      <tr><td>51–75</td><td><b>Опора просела.</b> Отсюда уходит основная часть энергии.</td></tr>
+      <tr><td>76–100</td><td><b>Опора обрушена.</b> Организм и психика в аварийном режиме.</td></tr>
+    </table>
+    <p style="margin-top:16px; font-size:14px; color:var(--muted);">Высокий балл не значит, что с вами что-то не так. Он значит, что система работает с перегрузом в этой конкретной зоне.</p>
+  </div>`;
+  
+  html+=`<div class="card" style="text-align:center;">
+    <h2>Разбор показал, где просело</h2>
+    <p style="margin-bottom:24px;">Он не показывает, почему именно у вас и что делать в вашей ситуации. Дальше короткое видео о методе «4 опоры»: как устроена система и что делать с найденной утечкой. После видео сможете записаться на бесплатную диагностическую сессию.</p>
+    <a class="btn" style="display:inline-block; margin-bottom:16px; font-weight:600;" href="https://go.peach.talk/KNP1waWT_8I">СМОТРЕТЬ ВИДЕО</a>
+    <p style="color:var(--muted); font-size:14px;">Возьмите на разбор свои четыре цифры: <b style="color:var(--ink);">${scores[0]} · ${scores[1]} · ${scores[2]} · ${scores[3]}</b></p>
   </div>`;
 
   document.getElementById('result').innerHTML=html;
