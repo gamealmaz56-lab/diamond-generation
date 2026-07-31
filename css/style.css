@@ -475,21 +475,25 @@ h2{
 
 .formats-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;background:var(--line);border:1px solid var(--line);
+  gap:24px;background:transparent;border:none;
 }
 .fmt{
   background:var(--paper);
-  padding:52px 44px;
+  padding:52px 40px;
   display:flex;flex-direction:column;
   min-height:660px;
-  transition:background .2s;
+  transition:all .3s ease;
+  border:1px solid var(--line);
 }
 .fmt:hover{background:var(--white);}
 .fmt.featured{
   background:var(--navy);
-  border-top:3px solid var(--gold);
+  border:none;
+  border-top:4px solid var(--gold);
+  box-shadow:0 12px 32px rgba(0,0,0,0.1);
+  transform:scale(1.02);
 }
-.fmt.featured:hover{background:var(--navy2);}
+.fmt.featured:hover{background:var(--navy2); transform:scale(1.03);}
 
 .fmt-badge{
   font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
@@ -506,13 +510,14 @@ h2{
 .fmt-list li{
   font-size:15px;color:var(--muted);
   padding:12px 0 12px 22px;position:relative;
-  line-height:1.5;
+  border-bottom:1px solid rgba(0,0,0,.05);line-height:1.5;
 }
-.fmt.featured .fmt-list li{color:rgba(255,255,255,.45);}
+.fmt.featured .fmt-list li{color:rgba(255,255,255,.45);border-color:rgba(255,255,255,.06);}
 .fmt-list li::before{
   content:'';position:absolute;left:0;top:22px;
   width:8px;height:1px;background:var(--gold);
 }
+.fmt-list li:last-child{border-bottom:none;}
 
 .fmt-limit{
   font-size:15px;color:rgba(0,0,0,.45);
