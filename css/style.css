@@ -488,10 +488,9 @@ h2{
   border:none;
   border-top:4px solid var(--gold);
   box-shadow: 0 20px 60px rgba(12,25,39,0.15);
-  transform: translateY(-12px);
 }
 .fmt.featured:hover{
-  transform: translateY(-20px);
+  transform: translateY(-8px);
   box-shadow: 0 30px 70px rgba(12,25,39,0.25);
 }
 
@@ -513,7 +512,7 @@ h2{
 .fmt.featured h3{color:var(--white);}
 .fmt-sub{
   font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6;
-  min-height: 68px; /* 3 lines */
+  height: 92px; /* 4 lines */
 }
 .fmt.featured .fmt-sub{color:rgba(255,255,255,.5);}
 .fmt-price{
