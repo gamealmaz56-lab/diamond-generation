@@ -128,7 +128,7 @@ h2{
 .hero-grid{
   display:grid;grid-template-columns:1.1fr .9fr;
   gap:60px;align-items:center;
-  padding:60px 0 80px;
+  padding:24px 0 80px;
   position:relative;z-index:1;
 }
 
@@ -634,7 +634,7 @@ footer{
   .nav{display:none;}
   .hero h1{font-size:44px;}
   .hero h1 em{font-size:36px;}
-  .hero-grid{grid-template-columns:1fr;gap:56px;padding:60px 0 68px;}
+  .hero-grid{grid-template-columns:1fr;gap:56px;padding:24px 0 68px;}
   .hero-photo-col{max-width:400px;margin:0 auto;}
   .stats-inner{grid-template-columns:repeat(2,1fr);}
   .author-grid{grid-template-columns:1fr;gap:56px;}
