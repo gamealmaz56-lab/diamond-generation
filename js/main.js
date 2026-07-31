@@ -86,11 +86,9 @@
 });
 
 /* Form */
-document.getElementById('btn-submit').addEventListener('click',function(e){
-  e.preventDefault();
-  var name=document.getElementById('f-name').value.trim();
-  var phone=document.getElementById('f-phone').value.trim();
-  if(!name||!phone){alert('Укажите имя и телефон.');return;}
-  this.textContent='Заявка отправлена ✓';
-  this.style.background='#2d6b2d';this.style.pointerEvents='none';
+document.querySelector('.cta-form').addEventListener('submit',function(){
+  var btn=document.getElementById('btn-submit');
+  btn.textContent='Отправка...';
+  btn.style.background='#2d6b2d';
+  btn.style.pointerEvents='none';
 });
