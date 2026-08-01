@@ -507,12 +507,13 @@ h2{
 .fmt h3{
   font-family:var(--serif);font-size:28px;font-weight:400;color:var(--ink);
   margin-bottom:16px; line-height:1.3;
-  height: 80px;
 }
 .fmt.featured h3{color:var(--white);}
 .fmt-sub{
   font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6;
-  height: 92px; /* 4 lines */
+}
+.fmt-top {
+  min-height: 230px;
 }
 .fmt.featured .fmt-sub{color:rgba(255,255,255,.5);}
 .fmt-price{
