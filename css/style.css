@@ -524,7 +524,7 @@ h2{
   font-size:24px; opacity:0.7; vertical-align:super; margin-right:4px;
 }
 
-.fmt-list{list-style:none; flex-grow: 1; margin-bottom:40px;}
+.fmt-list{list-style:none; margin-bottom:40px;}
 .fmt-list li{
   font-size:15px;color:var(--ink);
   padding:14px 0 14px 26px;position:relative;
@@ -541,6 +541,7 @@ h2{
   font-size:14px;color:rgba(0,0,0,.45);
   border-top:1px solid rgba(184,136,46,0.2);padding-top:24px;line-height:1.6;
   margin-top: auto;
+  min-height: 100px;
 }
 .fmt.featured .fmt-limit{color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.1);}
 
