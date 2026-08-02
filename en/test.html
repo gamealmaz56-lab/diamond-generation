@@ -128,6 +128,15 @@ a.btn:hover{background:#2c2621}
   </section>
 
   <section id="quiz" class="hidden"></section>
+  <section id="leadgate" class="hidden card" style="text-align: center; padding: 48px 40px; margin-top: 40px; background: var(--white);">
+    <h2 style="margin-bottom: 16px;">Your Breakdown is Ready</h2>
+    <p style="color: var(--muted); margin-bottom: 32px; font-size: 16px;">Provide your email to receive the results in your inbox and see them right now.</p>
+    <form id="leadform" style="max-width: 360px; margin: 0 auto; text-align: left;">
+      <input type="text" id="lf-name" placeholder="Your Name" required style="width: 100%; padding: 14px 16px; margin-bottom: 16px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; background: var(--paper);">
+      <input type="email" id="lf-email" placeholder="Your Email" required style="width: 100%; padding: 14px 16px; margin-bottom: 24px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; background: var(--paper);">
+      <button type="submit" class="btn" id="lf-submit" style="width: 100%;">SHOW RESULTS</button>
+    </form>
+  </section>
   <section id="result" class="hidden"></section>
 </div>
 
@@ -199,7 +208,15 @@ function go(n){n===0?show('s0'):show('p'+(n-1));}
 function next(pi){const n=Object.values(answers).filter(a=>a.p===pi).length;
   const w=document.getElementById('w'+pi);
   if(n<12){w.classList.remove('hidden');return;}
-  w.classList.add('hidden');pi===3?buildResult():show('p'+(pi+1));}
+  w.classList.add('hidden');pi===3?showLeadGate():show('p'+(pi+1));}
+
+function showLeadGate(){
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('p3').classList.add('hidden');
+  document.getElementById('leadgate').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+  buildResult();
+}
 
 function bandIdx(s){return s<=25?0:s<=50?1:s<=75?2:3;}
 function bandColor(i){return['#5c7a5e','#a8834e','#b3672f','#9a4f3f'][i];}
@@ -208,6 +225,7 @@ function buildResult(){
   const rawScores=PILLARS.map((p,pi)=>Object.values(answers).filter(a=>a.p===pi).reduce((s,a)=>s+a.v,0));
   const scores=rawScores.map(rs => Math.round((rs / 48) * 100));
   const total=scores.reduce((a,b)=>a+b,0);
+  window.TEST_SCORES = { scores, total };
   const order=scores.map((v,i)=>({v,i})).sort((a,b)=>b.v-a.v);
   const w1=order[0].i,w2=order[1].i;
   const spread=order[0].v-order[3].v;
@@ -292,8 +310,39 @@ function buildResult(){
 
   document.getElementById('result').innerHTML=html;
   document.getElementById('pbar').style.width='100%';
-  show('result');
 }
+
+document.getElementById('leadform').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('lf-submit');
+  btn.textContent = 'SENDING...';
+  btn.style.opacity = '0.7';
+  
+  const name = document.getElementById('lf-name').value;
+  const email = document.getElementById('lf-email').value;
+  const s = window.TEST_SCORES.scores;
+  
+  const formData = new FormData();
+  formData.append('_subject', 'Diagnostic Result (EN): ' + name);
+  formData.append('_autoresponse', 'Your breakdown is ready. Mental Pillar: ' + s[0] + ' / Physical: ' + s[1] + ' / Spiritual: ' + s[2] + ' / Social: ' + s[3] + '. Watch the short video explaining the mechanics of the method: https://go.peach.talk/KNP1waWT_8I');
+  formData.append('_captcha', 'false');
+  formData.append('email', email);
+  formData.append('Name', name);
+  formData.append('Mental', s[0]);
+  formData.append('Physical', s[1]);
+  formData.append('Spiritual', s[2]);
+  formData.append('Social', s[3]);
+  formData.append('Total', window.TEST_SCORES.total);
+  
+  fetch(WEBHOOK, {
+    method: 'POST',
+    body: formData
+  }).then(res => {
+    show('result');
+  }).catch(err => {
+    show('result'); // fallback
+  });
+});
 </script>
 <footer style="margin-top:60px; padding:40px 24px; border-top:1px solid var(--line); background:var(--ink); color:var(--paper); text-align:center;">
   <div style="font-size:14px; max-width:800px; margin:0 auto; color:rgba(255,255,255,0.6);">
