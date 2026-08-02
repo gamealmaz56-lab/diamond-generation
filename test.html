@@ -349,6 +349,19 @@ document.getElementById('leadform').addEventListener('submit', function(e) {
     show('result'); // show anyway so we don't block user if formsubmit is down
   });
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.search.includes('skip=1')) {
+    let q = 1;
+    for (let p=0; p<4; p++) {
+      for (let i=0; i<12; i++) {
+        answers['q'+q] = {v: Math.floor(Math.random()*5), p: p, n: q};
+        q++;
+      }
+    }
+    showLeadGate();
+  }
+});
 </script>
 <footer style="margin-top:60px; padding:40px 24px; border-top:1px solid var(--line); background:var(--ink); color:var(--paper); text-align:center;">
   <div style="font-size:14px; max-width:800px; margin:0 auto; color:rgba(255,255,255,0.6);">
