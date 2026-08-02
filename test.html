@@ -337,6 +337,7 @@ document.getElementById('leadform').addEventListener('submit', function(e) {
   const s = window.TEST_SCORES.scores;
   
   const payload = new URLSearchParams();
+  payload.append('lang', 'ru');
   payload.append('name', name);
   payload.append('email', email);
   payload.append('Mental', s[0]);
