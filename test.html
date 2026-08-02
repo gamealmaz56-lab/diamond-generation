@@ -133,8 +133,8 @@ a.btn:hover{background:#2c2621}
     <h2 style="margin-bottom: 16px;">Ваш разбор готов</h2>
     <p style="color: var(--muted); margin-bottom: 32px; font-size: 16px;">Укажите email, чтобы получить результаты на почту и увидеть их прямо сейчас.</p>
     <form id="leadform" style="max-width: 360px; margin: 0 auto; text-align: left;">
-      <input type="text" id="lf-name" placeholder="Ваше имя" required style="width: 100%; padding: 14px 16px; margin-bottom: 16px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; background: var(--paper);">
-      <input type="email" id="lf-email" placeholder="Ваш Email" required style="width: 100%; padding: 14px 16px; margin-bottom: 24px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; background: var(--paper);">
+      <input type="text" id="lf-name" name="name" placeholder="Ваше имя" required style="width: 100%; padding: 14px 16px; margin-bottom: 16px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; background: var(--paper);">
+      <input type="email" id="lf-email" name="email" placeholder="Ваш Email" required style="width: 100%; padding: 14px 16px; margin-bottom: 24px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 16px; box-sizing: border-box; background: var(--paper);">
       <button type="submit" class="btn" id="lf-submit" style="width: 100%;">ПОКАЗАТЬ РЕЗУЛЬТАТЫ</button>
     </form>
   </section>
@@ -319,35 +319,37 @@ function buildResult(){
 }
 
 document.getElementById('leadform').addEventListener('submit', function(e) {
-  e.preventDefault();
+  // Let the form submit natively to FormSubmit so the user sees the captcha/activation screen
   const btn = document.getElementById('lf-submit');
   btn.textContent = 'ОТПРАВКА...';
   btn.style.opacity = '0.7';
   
   const name = document.getElementById('lf-name').value;
-  const email = document.getElementById('lf-email').value;
   const s = window.TEST_SCORES.scores;
   
-  const formData = new FormData();
-  formData.append('_subject', 'Результат диагностики: ' + name);
-  formData.append('_autoresponse', 'Ваш разбор готов. Ментальная опора: ' + s[0] + ' / Физическая: ' + s[1] + ' / Духовная: ' + s[2] + ' / Социальная: ' + s[3] + '. Посмотрите короткое видео с расшифровкой механики метода: https://go.peach.talk/KNP1waWT_8I');
-  formData.append('_captcha', 'false');
-  formData.append('email', email);
-  formData.append('Name', name);
-  formData.append('Mental', s[0]);
-  formData.append('Physical', s[1]);
-  formData.append('Spiritual', s[2]);
-  formData.append('Social', s[3]);
-  formData.append('Total', window.TEST_SCORES.total);
+  // Set hidden inputs dynamically for native submission
+  const form = document.getElementById('leadform');
+  form.action = WEBHOOK.replace('/ajax/', '/');
+  form.method = 'POST';
   
-  fetch(WEBHOOK, {
-    method: 'POST',
-    body: formData
-  }).then(res => {
-    show('result');
-  }).catch(err => {
-    show('result'); // show anyway so we don't block user if formsubmit is down
-  });
+  const addHidden = (name, value) => {
+    let input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  };
+  
+  addHidden('_subject', 'Результат диагностики: ' + name);
+  addHidden('_autoresponse', 'Ваш разбор готов. Ментальная опора: ' + s[0] + ' / Физическая: ' + s[1] + ' / Духовная: ' + s[2] + ' / Социальная: ' + s[3] + '. Посмотрите короткое видео с расшифровкой механики метода: https://go.peach.talk/KNP1waWT_8I');
+  addHidden('Mental', s[0]);
+  addHidden('Physical', s[1]);
+  addHidden('Spiritual', s[2]);
+  addHidden('Social', s[3]);
+  addHidden('Total', window.TEST_SCORES.total);
+  addHidden('_next', 'https://diamondgeneration.store/test.html');
+  // Form will now submit natively
+
 });
 
 window.addEventListener('DOMContentLoaded', () => {
