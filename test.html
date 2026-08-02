@@ -143,7 +143,7 @@ a.btn:hover{background:#2c2621}
 
 <script>
 /* ====== НАСТРОЙКА: вставьте сюда ссылку Google Apps Script ====== */
-const WEBHOOK = 'https://formsubmit.co/diamond.generation108@gmail.com';
+const WEBHOOK = 'https://script.google.com/macros/s/AKfycbwLTH-sb-DbySCtjzlyN1dvmc4AQFAP_C5BjRRjZ2S_NtJw4GRmkl53_D7cOikoueL9/exec';
 /* ================================================================ */
 
 const PILLARS=[
@@ -336,26 +336,24 @@ document.getElementById('leadform').addEventListener('submit', function(e) {
   const email = document.getElementById('lf-email').value;
   const s = window.TEST_SCORES.scores;
   
-  const formData = new FormData();
-  formData.append('_subject', 'Результат диагностики: ' + name);
-  formData.append('_autoresponse', 'Ваш разбор готов. Ментальная опора: ' + s[0] + ' / Физическая: ' + s[1] + ' / Духовная: ' + s[2] + ' / Социальная: ' + s[3] + '. Посмотрите короткое видео с расшифровкой механики метода: https://go.peach.talk/KNP1waWT_8I\n\nПодробный разбор, который был показан на экране:\n\n' + window.TEST_SCORES.fullText);
-  formData.append('_captcha', 'false');
-  formData.append('email', email);
-  formData.append('Name', name);
-  formData.append('Mental', s[0]);
-  formData.append('Physical', s[1]);
-  formData.append('Spiritual', s[2]);
-  formData.append('Social', s[3]);
-  formData.append('Total', window.TEST_SCORES.total);
-  formData.append('Разбор', window.TEST_SCORES.fullText);
+  const payload = new URLSearchParams();
+  payload.append('name', name);
+  payload.append('email', email);
+  payload.append('Mental', s[0]);
+  payload.append('Physical', s[1]);
+  payload.append('Spiritual', s[2]);
+  payload.append('Social', s[3]);
+  payload.append('Total', window.TEST_SCORES.total);
+  payload.append('Разбор', window.TEST_SCORES.fullText);
   
   fetch(WEBHOOK, {
     method: 'POST',
-    body: formData
+    mode: 'no-cors',
+    body: payload
   }).then(res => {
     show('result');
   }).catch(err => {
-    show('result'); // show anyway so we don't block user if formsubmit is down
+    show('result');
   });
 });
 

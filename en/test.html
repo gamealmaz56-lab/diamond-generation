@@ -190,6 +190,17 @@ PILLARS.forEach((p,pi)=>{
   sec.innerHTML=html;quizEl.appendChild(sec);
 });
 
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.search.includes('result=1')) {
+    const saved = localStorage.getItem('saved_answers');
+    if (saved) {
+      Object.assign(answers, JSON.parse(saved));
+      showLeadGate();
+      show('result');
+    }
+  }
+});
+
 document.addEventListener('change',e=>{
   if(e.target.type!=='radio')return;
   answers[e.target.name]={v:+e.target.value,p:+e.target.dataset.p,n:+e.target.name.slice(1)};
@@ -330,26 +341,24 @@ document.getElementById('leadform').addEventListener('submit', function(e) {
   const email = document.getElementById('lf-email').value;
   const s = window.TEST_SCORES.scores;
   
-  const formData = new FormData();
-  formData.append('_subject', 'Diagnostic Result (EN): ' + name);
-  formData.append('_autoresponse', 'Your breakdown is ready. Mental Pillar: ' + s[0] + ' / Physical: ' + s[1] + ' / Spiritual: ' + s[2] + ' / Social: ' + s[3] + '. Watch the short video explaining the mechanics of the method: https://go.peach.talk/KNP1waWT_8I\n\nDetailed breakdown shown on the screen:\n\n' + window.TEST_SCORES.fullText);
-  formData.append('_captcha', 'false');
-  formData.append('email', email);
-  formData.append('Name', name);
-  formData.append('Mental', s[0]);
-  formData.append('Physical', s[1]);
-  formData.append('Spiritual', s[2]);
-  formData.append('Social', s[3]);
-  formData.append('Total', window.TEST_SCORES.total);
-  formData.append('Breakdown', window.TEST_SCORES.fullText);
+  const payload = new URLSearchParams();
+  payload.append('name', name);
+  payload.append('email', email);
+  payload.append('Mental', s[0]);
+  payload.append('Physical', s[1]);
+  payload.append('Spiritual', s[2]);
+  payload.append('Social', s[3]);
+  payload.append('Total', window.TEST_SCORES.total);
+  payload.append('Разбор', window.TEST_SCORES.fullText);
   
   fetch(WEBHOOK, {
     method: 'POST',
-    body: formData
+    mode: 'no-cors',
+    body: payload
   }).then(res => {
     show('result');
   }).catch(err => {
-    show('result'); // fallback
+    show('result');
   });
 });
 </script>
