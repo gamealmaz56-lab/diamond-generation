@@ -242,6 +242,15 @@ function buildResult(){
   RES={scores,total,w1,w2,spread,pkey,special,
     level:total<=100?0:total<=200?1:total<=300?2:3};
 
+  let fullText = `System Level: ${LEVELS[RES.level][0]}\n\n${LEVELS[RES.level][1].replace(/<[^>]+>/g, '\n').trim()}\n\n`;
+  fullText += `Main Vulnerability: ${PILLARS[w1].name}\n\n${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1].replace(/<[^>]+>/g, '\n').trim()}\n\n`;
+  if (special || pkey) {
+    fullText += `Your Profile: ${special?SPECIAL[special][0]:PROFILES[pkey][0]}\n\n${(special?SPECIAL[special][1]:PROFILES[pkey][1]).replace(/<[^>]+>/g, '\n').trim()}\n\n`;
+  }
+  const sprIdx = spread >= 25 ? 0 : 1;
+  fullText += `Spread: ${SPREAD[sprIdx][0]}\n\n${SPREAD[sprIdx][1].replace(/<[^>]+>/g, '\n').trim()}\n`;
+  window.TEST_SCORES.fullText = fullText;
+
   let html=`<div class="result-header">
     <div class="rh-top">
       <h2>Your audit results</h2>
@@ -324,7 +333,7 @@ document.getElementById('leadform').addEventListener('submit', function(e) {
   
   const formData = new FormData();
   formData.append('_subject', 'Diagnostic Result (EN): ' + name);
-  formData.append('_autoresponse', 'Your breakdown is ready. Mental Pillar: ' + s[0] + ' / Physical: ' + s[1] + ' / Spiritual: ' + s[2] + ' / Social: ' + s[3] + '. Watch the short video explaining the mechanics of the method: https://go.peach.talk/KNP1waWT_8I');
+  formData.append('_autoresponse', 'Your breakdown is ready. Mental Pillar: ' + s[0] + ' / Physical: ' + s[1] + ' / Spiritual: ' + s[2] + ' / Social: ' + s[3] + '. Watch the short video explaining the mechanics of the method: https://go.peach.talk/KNP1waWT_8I\n\nDetailed breakdown shown on the screen:\n\n' + window.TEST_SCORES.fullText);
   formData.append('_captcha', 'false');
   formData.append('email', email);
   formData.append('Name', name);
@@ -333,6 +342,7 @@ document.getElementById('leadform').addEventListener('submit', function(e) {
   formData.append('Spiritual', s[2]);
   formData.append('Social', s[3]);
   formData.append('Total', window.TEST_SCORES.total);
+  formData.append('Breakdown', window.TEST_SCORES.fullText);
   
   fetch(WEBHOOK, {
     method: 'POST',

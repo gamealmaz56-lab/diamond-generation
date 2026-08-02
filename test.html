@@ -246,6 +246,15 @@ function buildResult(){
 
   RES={scores,total,w1,w2,spread,pkey,special,
     level:total<=100?0:total<=200?1:total<=300?2:3};
+    
+  let fullText = `Уровень системы: ${LEVELS[RES.level][0]}\n\n${LEVELS[RES.level][1].replace(/<[^>]+>/g, '\n').trim()}\n\n`;
+  fullText += `Главная утечка: ${PILLARS[w1].name}\n\n${BANDS[PILLARS[w1].key][bandIdx(scores[w1])][1].replace(/<[^>]+>/g, '\n').trim()}\n\n`;
+  if (special || pkey) {
+    fullText += `Ваш профиль: ${special?SPECIAL[special][0]:PROFILES[pkey][0]}\n\n${(special?SPECIAL[special][1]:PROFILES[pkey][1]).replace(/<[^>]+>/g, '\n').trim()}\n\n`;
+  }
+  const sprIdx = spread >= 25 ? 0 : 1;
+  fullText += `Характер просадки: ${SPREAD[sprIdx][0]}\n\n${SPREAD[sprIdx][1].replace(/<[^>]+>/g, '\n').trim()}\n`;
+  window.TEST_SCORES.fullText = fullText;
 
   /* --- КОРОТКИЙ РЕЗУЛЬТАТ + ГЕЙТ --- */
   let html=`<div class="result-header">
@@ -319,37 +328,36 @@ function buildResult(){
 }
 
 document.getElementById('leadform').addEventListener('submit', function(e) {
-  // Let the form submit natively to FormSubmit so the user sees the captcha/activation screen
+  e.preventDefault();
   const btn = document.getElementById('lf-submit');
   btn.textContent = 'ОТПРАВКА...';
   btn.style.opacity = '0.7';
   
   const name = document.getElementById('lf-name').value;
+  const email = document.getElementById('lf-email').value;
   const s = window.TEST_SCORES.scores;
   
-  // Set hidden inputs dynamically for native submission
-  const form = document.getElementById('leadform');
-  form.action = WEBHOOK.replace('/ajax/', '/');
-  form.method = 'POST';
+  const formData = new FormData();
+  formData.append('_subject', 'Результат диагностики: ' + name);
+  formData.append('_autoresponse', 'Ваш разбор готов. Ментальная опора: ' + s[0] + ' / Физическая: ' + s[1] + ' / Духовная: ' + s[2] + ' / Социальная: ' + s[3] + '. Посмотрите короткое видео с расшифровкой механики метода: https://go.peach.talk/KNP1waWT_8I\n\nПодробный разбор, который был показан на экране:\n\n' + window.TEST_SCORES.fullText);
+  formData.append('_captcha', 'false');
+  formData.append('email', email);
+  formData.append('Name', name);
+  formData.append('Mental', s[0]);
+  formData.append('Physical', s[1]);
+  formData.append('Spiritual', s[2]);
+  formData.append('Social', s[3]);
+  formData.append('Total', window.TEST_SCORES.total);
+  formData.append('Разбор', window.TEST_SCORES.fullText);
   
-  const addHidden = (name, value) => {
-    let input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-  };
-  
-  addHidden('_subject', 'Результат диагностики: ' + name);
-  addHidden('_autoresponse', 'Ваш разбор готов. Ментальная опора: ' + s[0] + ' / Физическая: ' + s[1] + ' / Духовная: ' + s[2] + ' / Социальная: ' + s[3] + '. Посмотрите короткое видео с расшифровкой механики метода: https://go.peach.talk/KNP1waWT_8I');
-  addHidden('Mental', s[0]);
-  addHidden('Physical', s[1]);
-  addHidden('Spiritual', s[2]);
-  addHidden('Social', s[3]);
-  addHidden('Total', window.TEST_SCORES.total);
-  addHidden('_next', 'https://diamondgeneration.store/test.html');
-  // Form will now submit natively
-
+  fetch(WEBHOOK, {
+    method: 'POST',
+    body: formData
+  }).then(res => {
+    show('result');
+  }).catch(err => {
+    show('result'); // show anyway so we don't block user if formsubmit is down
+  });
 });
 
 window.addEventListener('DOMContentLoaded', () => {
