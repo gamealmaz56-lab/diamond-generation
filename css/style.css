@@ -768,7 +768,7 @@ footer{
 
   /* Шаги */
   .steps{grid-template-columns:1fr;}
-  .step{padding:24px 0;}
+  .step{padding:28px 24px;}
   .guarantee{padding:24px 20px;}
 
   /* CTA */
