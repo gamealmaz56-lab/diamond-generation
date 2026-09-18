@@ -713,14 +713,15 @@ footer{
   /* Типографика */
   h2{font-size:26px;letter-spacing:-.3px;}
   body{font-size:16px;}
-  section{padding:56px 0;}
+  section{padding:48px 0;}
+  .hero{padding:0;}
 
   /* Hero */
   .hero h1{font-size:30px;letter-spacing:-1px;}
   .hero h1 em{font-size:24px;}
   .hero-lead{font-size:16px;margin:24px 0 14px;}
   .hero-kicker{font-size:10px;}
-  .hero-grid{gap:36px;padding:24px 0 48px;}
+  .hero-grid{gap:24px;padding:20px 0 24px;}
   #btn-hero,.btn{width:100%;text-align:center;padding:18px 24px;box-sizing:border-box;}
 
   /* Stats */
