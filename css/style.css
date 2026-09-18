@@ -645,36 +645,141 @@ footer{
 /* ══════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET  (≤ 1040px)
+   ══════════════════════════════════════ */
 @media(max-width:1040px){
   .wrap,.hdr-in,footer{padding-left:32px;padding-right:32px;}
+
+  /* Навигация скрыта */
   .nav{display:none;}
+
+  /* Типографика */
+  h2{font-size:34px;}
+  section{padding:80px 0;}
+
+  /* Hero */
   .hero h1{font-size:44px;}
   .hero h1 em{font-size:36px;}
-  .hero-grid{grid-template-columns:1fr;gap:56px;padding:24px 0 68px;}
-  .hero-photo-col{max-width:400px;margin:0 auto;}
+  .hero-grid{grid-template-columns:1fr;gap:48px;padding:32px 0 60px;}
+  .hero-photo-col{max-width:420px;margin:0 auto;}
+  #btn-hero{display:block;text-align:center;}
+
+  /* Stats */
   .stats-inner{grid-template-columns:repeat(2,1fr);}
-  .author-grid{grid-template-columns:1fr;gap:56px;}
-  .author-photo-wrap{max-width:420px;margin:0 auto;}
-  .eco-grid{grid-template-columns:1fr;gap:56px;}
-  .wheel-wrap{max-width:360px;margin:0 auto;}
-  .testi-card{border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.02);margin-bottom:24px;grid-template-columns:1fr;}
-  .testi-meta-col{border-top:1px solid var(--line);}
-  .formats-grid{grid-template-columns:1fr;}
-  .why-grid{grid-template-columns:repeat(2,1fr);}
-  .steps{grid-template-columns:repeat(2,1fr);}
-  .cta-inner{grid-template-columns:1fr;gap:52px;}
-  h2{font-size:34px;}
   .stat-n{font-size:48px;}
-  section{padding:80px 0;}
+
+  /* Автор */
+  .author-grid{grid-template-columns:1fr;gap:48px;}
+  .author-photo-wrap{max-width:420px;margin:0 auto;}
+
+  /* Четыре опоры */
+  .static-pillars{grid-template-columns:1fr !important;}
+
+  /* Отзывы */
+  .testi-card{
+    grid-template-columns:1fr;
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:24px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.04);
+  }
+  .testi-meta-col{border-top:1px solid var(--line);}
+
+  /* Форматы */
+  .formats-grid{grid-template-columns:1fr;}
+
+  /* Почему / Why */
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* Шаги */
+  .steps{grid-template-columns:repeat(2,1fr);}
+
+  /* Корпоративный баннер */
+  .corporate-banner{flex-direction:column !important;gap:28px !important;}
+  .corporate-banner > div:last-child{max-width:100% !important;width:100% !important;}
+
+  /* CTA */
+  .cta-inner{grid-template-columns:1fr;gap:40px;}
+  .cta-section .btn{display:block;text-align:center;}
 }
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE  (≤ 580px)
+   ══════════════════════════════════════ */
 @media(max-width:580px){
   .wrap,.hdr-in,footer{padding-left:20px;padding-right:20px;}
-  .stats-inner{grid-template-columns:repeat(2,1fr); gap:20px 0;}
-  .stat{padding:16px;}
-  .stat-n{font-size:36px;}
+
+  /* Типографика */
+  h2{font-size:26px;letter-spacing:-.3px;}
+  body{font-size:16px;}
+  section{padding:56px 0;}
+
+  /* Hero */
+  .hero h1{font-size:30px;letter-spacing:-1px;}
+  .hero h1 em{font-size:24px;}
+  .hero-lead{font-size:16px;margin:24px 0 14px;}
+  .hero-kicker{font-size:10px;}
+  .hero-grid{gap:36px;padding:24px 0 48px;}
+  #btn-hero,.btn{width:100%;text-align:center;padding:18px 24px;box-sizing:border-box;}
+
+  /* Stats */
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:16px 0;}
+  .stat{padding:16px 12px;}
+  .stat-n{font-size:34px;}
+  .stat-title{font-size:12px;}
+  .stat-desc{font-size:12px;}
+
+  /* Автор */
+  .author-badge{font-size:12px;}
+  .author-eyebrow{font-size:11px;}
+  .creds .cred-row{grid-template-columns:64px 1fr;gap:12px;}
+  .cred-year{font-size:14px;}
+  .cred-text{font-size:14px;}
+  .author-highlight{padding:24px 20px !important;}
+  .author-highlight p:first-child{font-size:16px !important;}
+
+  /* Симптомы */
+  .sign-row{flex-direction:column;gap:8px;}
+  .sign-idx{font-size:32px;}
+  .signs-list h3{font-size:18px;}
+
+  /* Почему не сработало */
   .why-grid{grid-template-columns:1fr;}
+  .why-card{padding:28px 24px;}
+
+  /* Четыре опоры */
+  .static-pillars{grid-template-columns:1fr !important;gap:16px !important;}
+  .st-card{padding:24px 20px !important;}
+  .st-card h3{font-size:20px !important;}
+
+  /* Отзывы */
+  .testi-card{flex-direction:column;}
+  .testi-quote-text{font-size:18px;}
+  .testi-result-item{font-size:13px;}
+
+  /* Форматы */
+  .formats-grid{grid-template-columns:1fr;gap:16px;}
+  .fmt{padding:28px 24px;}
+  .fmt-price{font-size:40px;}
+  .fmt-list li{font-size:14px;}
+  .corporate-banner{padding:28px 20px !important;}
+  .corporate-banner h3{font-size:24px !important;}
+
+  /* Шаги */
   .steps{grid-template-columns:1fr;}
-  .hero h1{font-size:34px;}
-  h2{font-size:28px;}
-  section{padding:60px 0;}
+  .step{padding:24px 0;}
+  .guarantee{padding:24px 20px;}
+
+  /* CTA */
+  .cta-section .wrap > div{padding:40px 24px !important;}
+  .cta-section .btn{font-size:14px !important;padding:18px 24px !important;}
+
+  /* Хедер */
+  .hdr-right{flex-shrink:0;}
+  #btn-nav{padding:12px 20px;font-size:12px;}
+  .logo-text{font-size:12px;letter-spacing:.18em;}
+
+  /* Футер */
+  footer{padding:40px 20px;}
 }
